@@ -1,12 +1,23 @@
-import { ComingSoon } from "@/components/comingSoon";
+import { LandingSection } from "@/components/home/landing";
+import { Mandate } from "@/components/home/mandate";
+import { Scripture } from "@/components/home/scripture";
+import { PageLoader } from "@/components/pageLoader";
 import { Suspense } from "react";
 
-export default async function Home() {
-  await new Promise((resolve) => setTimeout(resolve, 3000));
+export default function Home() {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense
+      fallback={
+        <div>
+          {" "}
+          <PageLoader></PageLoader>
+        </div>
+      }
+    >
       <main>
-        <ComingSoon></ComingSoon>
+        <LandingSection></LandingSection>
+        <Scripture></Scripture>
+        <Mandate></Mandate>
       </main>
     </Suspense>
   );

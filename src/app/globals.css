@@ -40,7 +40,7 @@
   /* gradients */
   --gradient-primary: linear-gradient(
     90deg,
-    var(--color-primary-600),
+    var(--color-primary-800),
     var(--color-primary-dark-900)
   );
   --gradient-primary-dark: linear-gradient(
@@ -57,12 +57,12 @@
 
 @layer components {
   .btn-primary {
-    @apply px-8 py-3 rounded-md text-white font-semibold transition-all duration-200 transform hover:scale-105;
+    @apply px-8 py-4 rounded-md text-white font-semibold transition-all duration-200 transform hover:scale-105 flex items-center justify-center;
     background: var(--color-primary-900);
   }
 
   .btn-secondary {
-    @apply px-8 py-3 rounded-md font-semibold bg-transparent border-dark text-dark border-2 transition-all duration-200 transform hover:scale-105;
+    @apply px-8 py-4 rounded-md font-semibold bg-transparent border-dark text-dark border-2 transition-all duration-200 transform hover:scale-105 flex items-center justify-center;
   }
 
   .gradient-text {
