@@ -3,6 +3,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { EventCarousel } from "./eventCarousel";
 
 export function UpcomingEvents() {
   const ref = useRef(null);
@@ -16,20 +17,16 @@ export function UpcomingEvents() {
       ref={ref}
       className="flex items-center justify-center section-padding"
     >
-      <div className="container-max w-full grid grid-cols-1 lg:grid-cols-2 gap-16 p-12">
+      <div className="container-max w-full h-200 grid grid-cols-1 lg:grid-cols-2 gap-16 p-12">
         <motion.div
-          initial={{ x: 50, opacity: 0 }}
-          animate={isInView ? { x: 0, opacity: 1 } : { x: 50, opacity: 0 }}
+          initial={{ x: 20, opacity: 0 }}
+          animate={isInView ? { x: 0, opacity: 1 } : { x: 20, opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="w-full h-full flex items-center justify-center bg-dark rounded-2xl"
+          className="w-full h-full flex items-center justify-center rounded-2xl"
         >
-          <Image
-            src={"/home/PHOTO-2023-10-10-20-47-01-removebg-preview.png"}
-            alt="Bishop Joel"
-            width={500}
-            height={800}
-            className="transform scale-x-[-1] object-cover"
-          />
+          <div className="bg-white lg:scale-150">
+            <EventCarousel></EventCarousel>
+          </div>
         </motion.div>
 
         <motion.div

@@ -46,7 +46,7 @@ export function LandingSection() {
           </motion.div>
 
           <motion.p
-            initial={{ x: 50, opacity: 0 }}
+            initial={{ x: 20, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.5}}
             className="sm:text-lg md:text-xl max-w-sm md:max-w-md text-center font-medium opacity-90"
