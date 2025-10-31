@@ -8,19 +8,90 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --font-sans: var(--font-montserrat);
   --font-mono: var(--font-geist-mono);
+
+  /* colors */
+  --color-primary-50: #f6fcfd;
+  --color-primary-100: #eaf8fb;
+  --color-primary-200: #cfeff6;
+  --color-primary-300: #85dbe6;
+  --color-primary-400: #4cc0cc;
+  --color-primary-500: #1aa6b6;
+  --color-primary-600: #018fa3;
+  --color-primary-700: #01798f;
+  --color-primary-800: #01627c;
+  --color-primary-900: #01516e;
+
+  /* darker variant (for stronger/dark UI accents) */
+  --color-primary-dark-50: #e9f7f7;
+  --color-primary-dark-100: #aeecec;
+  --color-primary-dark-200: #52c9ce;
+  --color-primary-dark-300: #21aeb0;
+  --color-primary-dark-400: #09939a;
+  --color-primary-dark-500: #007f86;
+  --color-primary-dark-600: #00636f;
+  --color-primary-dark-700: #004e59;
+  --color-primary-dark-800: #003844;
+  --color-primary-dark-900: #002731;
+
+  --color-dark: #121212;
+  --color-light: #f5f5f5;
+  /* gradients */
+  --gradient-primary: linear-gradient(
+    90deg,
+    var(--color-primary-600),
+    var(--color-primary-dark-900)
+  );
+  --gradient-primary-dark: linear-gradient(
+    90deg,
+    var(--color-primary-dark-600),
+    var(--color-primary-dark-900)
+  );
+  --gradient-primary-light: linear-gradient(
+    90deg,
+    var(--color-primary-200),
+    var(--color-primary-400)
+  );
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer components {
+  .btn-primary {
+    @apply px-8 py-3 rounded-md text-white font-semibold transition-all duration-200 transform hover:scale-105;
+    background: var(--color-primary-900);
+  }
+
+  .btn-secondary {
+    @apply px-8 py-3 rounded-md font-semibold bg-transparent border-dark text-dark border-2 transition-all duration-200 transform hover:scale-105;
+  }
+
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+  }
+
+  .gradient-background {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-background-dark {
+    background: var(--gradient-primary-dark);
+  }
+
+  .section-padding {
+    @apply px-4 sm:px-6 lg:px-8 py-12;
+  }
+
+  .container-max {
+    @apply max-w-7xl mx-auto;
   }
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-montserrat), Arial, Helvetica, sans-serif;
 }
