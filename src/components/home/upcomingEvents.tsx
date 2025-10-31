@@ -2,19 +2,21 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
-export function Mandate() {
+export function UpcomingEvents() {
   const ref = useRef(null);
   const isInView = useInView(ref, {
     once: true,
     amount: 0.2,
   });
+
   return (
     <section
       ref={ref}
       className="flex items-center justify-center section-padding"
     >
-      <div className="container-max w-full grid grid-cols-1 lg:grid-cols-3 gap-8 p-12">
+      <div className="container-max w-full grid grid-cols-1 lg:grid-cols-2 gap-16 p-12">
         <motion.div
           initial={{ x: 50, opacity: 0 }}
           animate={isInView ? { x: 0, opacity: 1 } : { x: 50, opacity: 0 }}
@@ -34,21 +36,23 @@ export function Mandate() {
           initial={{ x: -50, opacity: 0 }}
           animate={isInView ? { x: 0, opacity: 1 } : { x: -50, opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="w-full h-full flex flex-col items-center lg:items-end justify-center text-center lg:text-right lg:col-span-2"
+          className="w-full h-full flex flex-col items-center lg:items-start justify-center text-center lg:text-left "
         >
-          <div className="max-w-xl space-y-5">
+          <div className="max-w-xl flex flex-col items-center lg:items-start space-y-5">
             <h3 className="font-medium text-primary-900 text-lg md:text-2xl">
-              The Mandate
+              Upcoming Events!
             </h3>
             <h2 className="font-medium text-dark text-2xl md:text-4xl leading-10 md:leading-15">
-              Bringing Restoration to Humanity and the Dying World.
+              {
+                "Stay connected! Experience God’s move in our upcoming services, crusades, and conferences."
+              }
             </h2>
-            <p className="font-medium text-dark text-lg md:text-xl leading-8 md:leading-10">
-              City of David Tabernacle is more than a church it is a movement of
-              restoration. Through the transforming power of the Word, prayer,
-              and love, we are committed to rebuilding lives, families, and
-              destinies broken by the pressures of the world.
-            </p>
+
+            <Link href={"/resources/events"}>
+              <button className="btn-primary h-12 md:h-16 hover:bg-red-600">
+                View All Events
+              </button>
+            </Link>
           </div>
         </motion.div>
       </div>

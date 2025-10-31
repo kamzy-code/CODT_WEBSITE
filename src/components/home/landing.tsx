@@ -48,7 +48,7 @@ export function LandingSection() {
           <motion.p
             initial={{ x: 50, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.5, delay: 1 }}
+            transition={{ duration: 0.5}}
             className="sm:text-lg md:text-xl max-w-sm md:max-w-md text-center font-medium opacity-90"
           >
             A place of transformation, renewal, and restoration through the
@@ -62,13 +62,13 @@ export function LandingSection() {
             className="flex gap-6 scale-85 md:scale-100 "
           >
             <Link href={"https://www.youtube.com/@victorychapelmd_cod/streams"}>
-              <button className="btn-primary hover:bg-red-600 border-0 h-12 text-xs sm:text-sm ">
+              <button className="btn-primary hover:bg-red-600 border-0 h-12 md:h-16">
                 Watch Live
               </button>
             </Link>
 
             <Link href={"/the-church/about-us"}>
-              <button className="btn-secondary text-white border-white hover:bg-white hover:text-dark h-12 text-xs sm:text-sm">
+              <button className="btn-secondary text-white border-white hover:bg-white active:text-dark hover:text-dark h-12 md:h-16">
                 Learn More
               </button>
             </Link>
