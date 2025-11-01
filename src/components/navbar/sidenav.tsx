@@ -72,9 +72,9 @@ export function SideNav({ isOpen, onClose }: Props) {
               {openedSubMenus.the_church && (
                 <div className="flex flex-col px-5 gap-4">
                   <Link
-                    href={"/the-church/about-us"}
+                    href={"/the-church/about"}
                     onClick={onClose}
-                    className={`${pathname === "/the-church/about-us" ? "text-primary-600" : "text-dark"} hover:bg-primary-900 hover:text-white`}
+                    className={`${pathname === "/the-church/about" ? "text-primary-600" : "text-dark"} hover:bg-primary-900 hover:text-white`}
                   >
                     About Us
                   </Link>

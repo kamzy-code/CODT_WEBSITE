@@ -43,8 +43,8 @@ export function NavLinks() {
         {hoveredLink === "the-church" && (
           <div className="bg-white border border-dark rounded-md flex flex-col absolute top-full left-0 shadow-lg w-50">
             <Link
-              href={"/the-church/about-us"}
-              className={`${pathname === "/the-church/about-us" ? "text-primary-600" : "text-dark"} hover:bg-primary-900 hover:text-white p-4`}
+              href={"/the-church/about"}
+              className={`${pathname === "/the-church/about" ? "text-primary-600" : "text-dark"} hover:bg-primary-900 hover:text-white p-4`}
             >
               About Us
             </Link>

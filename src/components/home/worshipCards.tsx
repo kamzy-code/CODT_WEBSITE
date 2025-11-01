@@ -44,7 +44,7 @@ const CardData = [
   },
 ];
 
-export function WorshipCards() {
+export function WorshipCards({scripture}:{scripture?: boolean}) {
   const ref = useRef(null);
   const isInView = useInView(ref, {
     once: true,
@@ -103,7 +103,7 @@ export function WorshipCards() {
       })}
     </div>
     
-    <div className="flex items-center justify-center">
+    {scripture && <div className="flex items-center justify-center">
     <motion.h1
         initial={{ y: 50, opacity: 0 }}
         animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
@@ -113,7 +113,7 @@ export function WorshipCards() {
         “And I will restore to you the years that the locust hath eaten.” Joel
         2:25 (KJV)
       </motion.h1>
-    </div>
+    </div>}
     </>
   );
 }

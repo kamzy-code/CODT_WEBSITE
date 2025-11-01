@@ -23,7 +23,7 @@ export default function Home() {
     >
       <main>
         <LandingSection></LandingSection>
-        <WorshipWithUs></WorshipWithUs>
+        <WorshipWithUs scripture={true}></WorshipWithUs>
         <Mandate></Mandate>
         <FaithWalk></FaithWalk>
         <MonthlyTheme></MonthlyTheme>

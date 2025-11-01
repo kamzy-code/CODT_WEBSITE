@@ -1,7 +1,7 @@
 
 import { WorshipCards } from "./worshipCards";
 
-export function WorshipWithUs() {
+export function WorshipWithUs({scripture}: {scripture?: boolean}) {
   return (
     <section className="flex items-center justify-center section-padding gradient-background">
       <div className="container-max flex flex-col items-center justify-center gap-8 w-full py-12">
@@ -17,7 +17,7 @@ export function WorshipWithUs() {
         </div>
 
         <div>
-          <WorshipCards></WorshipCards>
+          <WorshipCards scripture={scripture}></WorshipCards>
         </div>
       </div>
     </section>

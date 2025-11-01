@@ -40,7 +40,7 @@ export function FaithCards() {
   });
 
   return (
-    <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div ref={ref} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
       {CardData.map((card, index) => {
         return (
           <motion.div
