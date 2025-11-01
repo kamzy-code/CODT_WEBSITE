@@ -17,21 +17,21 @@ export function UpcomingEvents() {
       ref={ref}
       className="flex items-center justify-center section-padding"
     >
-      <div className="container-max w-full h-200 grid grid-cols-1 lg:grid-cols-2 gap-16 p-12">
+      <div className="container-max w-full grid grid-cols-1 lg:grid-cols-2 gap-16 p-12">
         <motion.div
-          initial={{ x: 20, opacity: 0 }}
-          animate={isInView ? { x: 0, opacity: 1 } : { x: 20, opacity: 0 }}
+          initial={{ y: 20, opacity: 0 }}
+          animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
           transition={{ duration: 0.5 }}
           className="w-full h-full flex items-center justify-center rounded-2xl"
         >
-          <div className="bg-white lg:scale-150">
+          <div className="bg-white lg:scale-130">
             <EventCarousel></EventCarousel>
           </div>
         </motion.div>
 
         <motion.div
-          initial={{ x: -50, opacity: 0 }}
-          animate={isInView ? { x: 0, opacity: 1 } : { x: -50, opacity: 0 }}
+          initial={{ y: -20, opacity: 0 }}
+          animate={isInView ? { y: 0, opacity: 1 } : { y: -20, opacity: 0 }}
           transition={{ duration: 0.5 }}
           className="w-full h-full flex flex-col items-center lg:items-start justify-center text-center lg:text-left "
         >

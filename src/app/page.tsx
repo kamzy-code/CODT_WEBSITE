@@ -1,6 +1,8 @@
+import { DiscoverMinistries } from "@/components/home/discoverMinistries";
 import { FaithWalk } from "@/components/home/faithWalk";
 import { LandingSection } from "@/components/home/landing";
 import { Mandate } from "@/components/home/mandate";
+import { MeetPastor } from "@/components/home/meetPasor";
 import { MonthlyTheme } from "@/components/home/monthlyTheme";
 import { Scripture } from "@/components/home/scripture";
 import { UpcomingEvents } from "@/components/home/upcomingEvents";
@@ -24,6 +26,8 @@ export default function Home() {
         <FaithWalk></FaithWalk>
         <MonthlyTheme></MonthlyTheme>
         <UpcomingEvents></UpcomingEvents>
+        <MeetPastor></MeetPastor>
+        <DiscoverMinistries></DiscoverMinistries>
       </main>
     </Suspense>
   );

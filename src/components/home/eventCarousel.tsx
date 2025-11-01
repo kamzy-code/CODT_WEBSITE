@@ -32,7 +32,7 @@ export function EventCarousel() {
                     alt="Event"
                     width={600}
                     height={800}
-                    className="object-cover transition-transform duration-300 group-hover:scale-110"
+                    className="object-cover transition-transform duration-300 hover:scale-110"
                   />
             </div>
           </CarouselItem>
