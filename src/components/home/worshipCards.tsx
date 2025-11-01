@@ -3,13 +3,12 @@
 import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import Link from "next/link";
 
 const CardData = [
   {
     title: "Worship Experience",
     description: "Join in our worship service every Sunday",
-    img: "/home/IMG-20250825-WA0083.jpg",
+    img: "/home/PHOTO-2024-04-08-10-18-11.jpg",
     time: {
       victory: "Sunday - 11AM",
       restoration: "Sunday - 4PM",
@@ -18,7 +17,7 @@ const CardData = [
   {
     title: "Prayer Serivce",
     description: "Join in our worship service every Sunday",
-    img: "/home/DSC_0249 copy.jpg",
+    img: "/home/IMG-20250825-WA0131.jpg",
     time: {
       victory: "Monday - 9PM (ZOOM)",
       restoration: "",
@@ -27,7 +26,7 @@ const CardData = [
   {
     title: "Bible Study (Faith Clinic)",
     description: "Join in our worship service every Sunday",
-    img: "/home/IMG-20250825-WA0131.jpg",
+    img: "/home/IMG-20250825-WA0083.jpg",
     time: {
       victory: "Wednesday - 7PM",
       restoration: "Thursday - 5PM",
@@ -36,7 +35,7 @@ const CardData = [
   {
     title: "Midinght Prayer Fire Night",
     description: "Join in our worship service every Sunday",
-    img: "/home/377A6572.jpg",
+    img: "/home/DSC_0249 copy.jpg",
     time: {
       victory: "Friday - 11PM",
       restoration: "",

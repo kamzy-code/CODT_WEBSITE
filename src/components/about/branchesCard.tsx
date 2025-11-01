@@ -8,7 +8,7 @@ import Link from "next/link";
 const CardData = [
   {
     title: "Victory Chapel",
-    img: "/about/IMG-20250825-WA0080.jpg",
+    img: "/about/IMG-20250825-WA0084.jpg",
     url: "/the-church/branches",
   },
   {

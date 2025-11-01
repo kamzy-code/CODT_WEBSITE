@@ -6,7 +6,7 @@ import { useRef } from "react";
 
 
 const CardData = [
- "/about/IMG-20250825-WA0046.jpg", "/about/IMG-20250825-WA0087.jpg", "/about/PHOTO-2024-07-07-19-11-08.jpg", "/about/PHOTO-2024-07-07-19-11-08 (1).jpg"
+ "/about/IMG-20250825-WA0046.jpg", "/about/IMG-20250825-WA0087.jpg", "/about/PHOTO-2024-07-07-19-11-08.jpg", "/about/377A6572.jpg"
 ];
 
 export function JoinCards() {

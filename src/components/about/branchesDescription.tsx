@@ -10,7 +10,7 @@ const branchData = [
     description: `A vibrant assembly focused on victory through the Word. Worship with us and experience God’s power.`,
     address: "7953 Annapolis Rd Lanham, MD 20706",
     contact: "240-601-8936 || 202-763-9291",
-    image: "/about/IMG-20250825-WA0080.jpg"
+    image: "/about/IMG-20250825-WA0084.jpg"
   },
   {
     name: "Restoration Chapel",

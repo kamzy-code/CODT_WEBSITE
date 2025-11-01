@@ -1,5 +1,4 @@
 import { BranchesDescription } from "@/components/about/branchesDescription";
-import { ComingSoon } from "@/components/comingSoon";
 import { WorshipWithUs } from "@/components/home/worshipWithUs";
 import { PageHeader } from "@/components/pageHeader";
 
