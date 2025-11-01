@@ -33,7 +33,7 @@ export function LandingSection() {
             transition={{ duration: 1 }}
             className="fleex flex-col items-center justify-center"
           >
-            <h1 className="text-4xl md:text-6xl font-extrabold">
+            <h1 className="text-4xl md:text-6xl font-extrabold mb-2 md:mb-4">
               City of David
             </h1>
             <h1 className="text-4xl md:text-6xl font-extrabold">Tabernacle</h1>
@@ -62,13 +62,13 @@ export function LandingSection() {
             className="flex gap-6 scale-85 md:scale-100 "
           >
             <Link href={"https://www.youtube.com/@victorychapelmd_cod/streams"} target="_blank">
-              <button className="btn-primary hover:bg-red-600 border-0 h-12 md:h-16">
+              <button className="btn-primary hover:bg-red-600 border-0 h-12 md:h-16 p-2">
                 Watch Live
               </button>
             </Link>
 
             <Link href={"/the-church/about-us"}>
-              <button className="btn-secondary text-white border-white hover:bg-white active:text-dark hover:text-dark h-12 md:h-16">
+              <button className="btn-secondary text-white border-white hover:bg-white active:text-dark hover:text-dark h-12 md:h-16 p-2">
                 Learn More
               </button>
             </Link>

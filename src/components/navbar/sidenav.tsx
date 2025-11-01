@@ -51,11 +51,11 @@ export function SideNav({ isOpen, onClose }: Props) {
     <aside className="w-64 h-full bg-white shadow-md fixed left-0 top-0 z-40  ">
       <div className="px-4 py-6 mt-24 h-full overflow-y-auto">
         <nav>
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-2">
             <Link
               href={"/"}
               onClick={onClose}
-              className={`${pathname === "/" ? "bg-primary-600 text-white " : "text-dark"} hover:bg-primary-600 hover:text-white `}
+              className={`${pathname === "/" ? "bg-primary-600 text-white " : "text-dark"} hover:bg-primary-600 hover:text-white p-2`}
             >
               Home
             </Link>
@@ -63,7 +63,7 @@ export function SideNav({ isOpen, onClose }: Props) {
             <div className=" flex flex-col gap-4">
               <button
                 onClick={() => handleSubMenuToggle("the_church")}
-                className={`${pathname.startsWith("/the-church") ? "bg-primary-600 text-white " : "text-dark"} hover:bg-primary-600 hover:text-white  flex items-center`}
+                className={`${pathname.startsWith("/the-church") ? "bg-primary-600 text-white " : "text-dark"} hover:bg-primary-600 hover:text-white  flex items-center p-2`}
               >
                 The Church
                 <ChevronDown className="inline mb-1 ml-1 w-4 h-4" />
@@ -101,7 +101,7 @@ export function SideNav({ isOpen, onClose }: Props) {
             <Link
               href={"/give"}
               onClick={onClose}
-              className={`${pathname === "/give" ? "bg-primary-600 text-white " : "text-dark"} hover:bg-primary-600 hover:text-white`}
+              className={`${pathname === "/give" ? "bg-primary-600 text-white " : "text-dark"} hover:bg-primary-600 hover:text-white p-2`}
             >
               Give
             </Link>
@@ -109,7 +109,7 @@ export function SideNav({ isOpen, onClose }: Props) {
             <div className=" flex flex-col gap-4">
               <button
                 onClick={() => handleSubMenuToggle("ministries")}
-                className={`${pathname.startsWith("/ministries") ? "bg-primary-600 text-white " : "text-dark"} hover:bg-primary-600 hover:text-white  flex items-center`}
+                className={`${pathname.startsWith("/ministries") ? "bg-primary-600 text-white " : "text-dark"} hover:bg-primary-600 hover:text-white  flex items-center p-2`}
               >
                 Ministries
                 <ChevronDown className="inline ml-1 w-4 h-4" />
@@ -155,7 +155,7 @@ export function SideNav({ isOpen, onClose }: Props) {
             <div className=" flex flex-col gap-4">
               <button
                 onClick={() => handleSubMenuToggle("resources")}
-                className={`${pathname.startsWith("/resources") ? "bg-primary-600 text-white " : "text-dark"} hover:bg-primary-600 hover:text-white  flex items-center`}
+                className={`${pathname.startsWith("/resources") ? "bg-primary-600 text-white " : "text-dark"} hover:bg-primary-600 hover:text-white  flex items-center p-2`}
               >
                 Resources
                 <ChevronDown className="inline mb-1 ml-1 w-4 h-4" />
@@ -201,7 +201,7 @@ export function SideNav({ isOpen, onClose }: Props) {
             <Link
               href={"/contact"}
               onClick={onClose}
-              className={`${pathname === "/contact" ? "bg-primary-600 text-white " : "text-dark"} hover:bg-primary-600 hover:text-white mb-40`}
+              className={`${pathname === "/contact" ? "bg-primary-600 text-white " : "text-dark"} hover:bg-primary-600 hover:text-white p-2 mb-40`}
             >
               Contact
             </Link>

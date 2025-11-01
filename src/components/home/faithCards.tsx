@@ -13,14 +13,14 @@ const CardData = [
     url: "/the-church/about-us",
   },
   {
-    title: "Service Times",
-    subtitle: "View Times",
+    title: "Branches",
+    subtitle: "Find a Branch",
     img: "/home/PHOTO-2024-04-08-10-18-11.jpg",
     url: "/small-groups",
   },
   {
-    title: "Upcoming Events",
-    subtitle: "View Events",
+    title: "Prayer Request",
+    subtitle: "Submit a Prayer Request",
     img: "/home/377A6455.jpg",
     url: "/youth",
   },

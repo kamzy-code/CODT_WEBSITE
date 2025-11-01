@@ -37,7 +37,7 @@ export function StoriesCard() {
   return (
     <div
       ref={ref}
-      className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8"
+      className="grid grid-cols-1 md:grid-cols-2 gap-8"
     >
       {CardData.map((card, index) => {
         return (
