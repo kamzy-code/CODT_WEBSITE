@@ -1,9 +1,14 @@
+import { BranchesDescription } from "@/components/about/branchesDescription";
 import { ComingSoon } from "@/components/comingSoon";
+import { WorshipWithUs } from "@/components/home/worshipWithUs";
+import { PageHeader } from "@/components/pageHeader";
 
 export default function About() {
   return (
     <div className="min-h-screen">
-      <ComingSoon></ComingSoon>
+      <PageHeader title="Branches" description="Locate a branch near you"></PageHeader>
+      <BranchesDescription></BranchesDescription>
+      <WorshipWithUs></WorshipWithUs>
     </div>
   );
 }

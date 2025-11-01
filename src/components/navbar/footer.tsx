@@ -45,7 +45,7 @@ export function Footer() {
 
           <div className="text-sm text-white flex items-center gap-2">
             <LocationEdit className="w-6 h-6 text-primary-200" />
-            <p className="max-w-xs">Address: 7953 Annapolis Rd Lanham, MD 20706</p>
+            <p className="max-w-xs">7953 Annapolis Rd Lanham, MD 20706</p>
           </div>
 
           <div className="text-sm text-white flex items-center gap-2">
