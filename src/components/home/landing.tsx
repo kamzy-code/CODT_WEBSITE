@@ -61,7 +61,7 @@ export function LandingSection() {
             transition={{ duration: 0.5, delay: 1 }}
             className="flex gap-6 scale-85 md:scale-100 "
           >
-            <Link href={"https://www.youtube.com/@victorychapelmd_cod/streams"}>
+            <Link href={"https://www.youtube.com/@victorychapelmd_cod/streams"} target="_blank">
               <button className="btn-primary hover:bg-red-600 border-0 h-12 md:h-16">
                 Watch Live
               </button>

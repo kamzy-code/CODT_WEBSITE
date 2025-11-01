@@ -1,7 +1,6 @@
 "use client";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { EventCarousel } from "./eventCarousel";
 
@@ -39,7 +38,7 @@ export function UpcomingEvents() {
             <h3 className="font-medium text-primary-900 text-lg md:text-2xl">
               Upcoming Events!
             </h3>
-            <h2 className="font-medium text-dark text-2xl md:text-4xl leading-10 md:leading-15">
+            <h2 className="font-medium text-dark text-xl md:text-4xl leading-10 md:leading-15">
               {
                 "Stay connected! Experience God’s move in our upcoming services, crusades, and conferences."
               }

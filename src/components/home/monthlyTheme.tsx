@@ -18,7 +18,7 @@ export function MonthlyTheme() {
           initial={{ y: -50, opacity: 0 }}
           animate={isInView ? { y: 0, opacity: 1 } : { y: -50, opacity: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="font-medium text-center text-primary-900 text-2xl md:text-4xl leading-15"
+          className="font-medium text-center text-primary-900 text-2xl md:text-4xl"
         >
           Theme for the Month
         </motion.h2>
