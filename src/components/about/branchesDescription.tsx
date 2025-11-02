@@ -24,10 +24,7 @@ const branchData = [
 
 export function BranchesDescription() {
   const ref = useRef(null);
-  const isInView = useInView(ref, {
-    once: true,
-    amount: 0.2,
-  });
+  const isInView = true;
   return (
     <section
       ref={ref}
