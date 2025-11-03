@@ -15,7 +15,7 @@ export function PageHeader({ title, description }: Prop) {
   });
   return (
     <section ref={ref} className="relative bg-primary-200 mt-24">
-      <div className="w-full flex justify-center h-80 md:h-100 overflow-hidden">
+      <div className="w-full flex justify-center h-60 md:h-80 overflow-hidden">
         <Image
           src={"/home/IMG-20250825-WA0083.jpg"}
           alt={"Header Background"}
