@@ -15,7 +15,7 @@ const giveData = [
   },
   {
     name: "Zenith Bank - Naira",
-    account: "1234567890",
+    account: "1019742767",
     acct_name: "City of David Tabernacle",
     icon: "/give/Zenith.png",
   },
@@ -37,7 +37,7 @@ export function AccountInfo() {
                   initial={{ y: 50, opacity: 0 }}
                   animate={{ y: 0, opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.1 * index }}
-                  className="w-70 rounded-2xl overflow-hidden group bg-primary-100 flex flex-col gap-4"
+                  className="w-70 rounded-2xl overflow-hidden group bg-primary-50 flex flex-col gap-4"
                 >
                   <div className="flex item-center justify-center h-50">
                     <div className="flex items-center justify-center h-full w-full">
@@ -99,7 +99,7 @@ export function AccountInfo() {
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.1 * 5 }}
-            className="rounded-2xl overflow-hidden group w-70 bg-primary-100 flex flex-col gap-4"
+            className="rounded-2xl overflow-hidden group w-70 bg-primary-50 flex flex-col gap-4"
           >
             <div className="flex item-center justify-center h-50">
               <div className="flex items-center justify-center h-full w-full">

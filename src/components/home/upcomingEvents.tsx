@@ -2,7 +2,13 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
-import { EventCarousel } from "./eventCarousel";
+import { ImageCarousel } from "../imageCarousel";
+
+const images = [
+  "/home/restoration_25.png",
+  "/home/worship_experience.png",
+  "/home/october.png",
+];
 
 export function UpcomingEvents() {
   const ref = useRef(null);
@@ -24,7 +30,7 @@ export function UpcomingEvents() {
           className="w-full h-full flex items-center justify-center rounded-2xl"
         >
           <div className="bg-white lg:scale-130">
-            <EventCarousel></EventCarousel>
+            <ImageCarousel images={images} max_w="max-w-xs" card_height="h-full"></ImageCarousel>
           </div>
         </motion.div>
 
