@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
-const YOUTUBE_API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
-const PLAYLIST_ID = process.env.NEXT_PUBLIC_PLAYLIS_ID;
+const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
+const PLAYLIST_ID = process.env.PLAYLIST_ID;
 const MAX_RESULTS = 12;
 
 export const revalidate = 3600;
