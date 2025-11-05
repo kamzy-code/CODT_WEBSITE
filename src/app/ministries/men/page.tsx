@@ -1,9 +1,16 @@
-import { ComingSoon } from "@/components/comingSoon";
+import { ExploreMinistries } from "@/components/ministries/exploreMinistries";
+import { MenDescription } from "@/components/ministries/menDescription";
+import { PageHeader } from "@/components/pageHeader";
 
 export default function About() {
   return (
     <div className="min-h-screen">
-      <ComingSoon></ComingSoon>
+      <PageHeader
+        title="Men Ministry"
+        description="Explore Men's Ministry"
+      />
+      <MenDescription></MenDescription>
+      <ExploreMinistries></ExploreMinistries>
     </div>
   );
 }

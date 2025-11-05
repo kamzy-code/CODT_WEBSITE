@@ -4,8 +4,9 @@ import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
-const CardData = [
+const ministryData = [
   {
     title: "Men Ministry",
     img: "/home/IMG-20250620-WA0019.jpg",
@@ -28,7 +29,8 @@ const CardData = [
   },
 ];
 
-export function MinistryCards() {
+export function MinistryCards({gridStyle}: {gridStyle?: string}) {
+  const pathname = usePathname();
   const ref = useRef(null);
   const isInView = useInView(ref, {
     once: true,
@@ -36,10 +38,10 @@ export function MinistryCards() {
   });
 
   return (
-    <div ref={ref} className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-      {CardData.map((card, index) => {
+    <div ref={ref} className={`grid ${gridStyle ? gridStyle :"grid-cols-1 lg:grid-cols-2"} gap-8`}>
+      {ministryData.filter((ministry)=> ministry.url !== pathname).map((ministry, index) => {
         return (
-          <Link href={card.url} key={index}>
+          <Link href={ministry.url} key={index}>
             <motion.div
               initial={{ y: 50, opacity: 0 }}
               animate={isInView ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 }}
@@ -47,8 +49,8 @@ export function MinistryCards() {
               className="relative rounded-2xl overflow-hidden group bg-white h-80 w-full"
             >
               <Image
-                src={card.img}
-                alt={card.title}
+                src={ministry.img}
+                alt={ministry.title}
                 width={500}
                 height={700}
                 className="object-cover transition-transform duration-300 group-active:scale-110 group-hover:scale-110 h-full"
@@ -56,7 +58,7 @@ export function MinistryCards() {
               <div className="absolute inset-0 bg-black/60 flex items-end p-6">
                 <div className="h-full w-full flex flex-col items-center justify-center ">
                   <h2 className="text-white text-xl font-semibold capitalize drop-shadow-lg">
-                    {card.title}
+                    {ministry.title}
                   </h2>
                 </div>
               </div>

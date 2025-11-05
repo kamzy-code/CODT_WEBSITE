@@ -34,13 +34,6 @@ export function AboutDescription() {
           <div className="lg:scale-95 h-100">
             <ImageCarousel images={images} scale max_w="max-w-lg" card_height="h-80 md:h-100"></ImageCarousel>
           </div>
-
-          {/* <Image src={"/about/IMG-20250825-WA0080.jpg"}
-            alt="About Image"
-            width={500}
-            height={800}
-            className="transform scale-x-[-1] h-full w-full object-cover"
-          /> */}
         </motion.div>
 
         <motion.div
