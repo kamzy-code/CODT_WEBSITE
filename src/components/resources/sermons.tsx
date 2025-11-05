@@ -25,7 +25,7 @@ export function SermonsGrid() {
     <section className="flex items-center justify-center section-padding">
       <div className="container-max w-full grid grid-cols-1 md:grid-cols-3 gap-8 py-12 px-4">
         {sermons.map(({ id, title, thumbnail }) => (
-          <div key={id} className="aspect-video">
+          <div key={id} className="aspect-video bg-gray-50">
             <iframe
               className="w-full h-full rounded-lg"
               src={`https://www.youtube.com/embed/${id}`}
@@ -44,7 +44,7 @@ export function SermonsGrid() {
             }
             target="_blank"
           >
-            <button className="btn-primary h-12 hover:bg-red-600mx-auto">
+            <button className="btn-primary h-12 hover:bg-red-600 mx-auto">
               Listen to More Sermon
             </button>
           </Link>
