@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { ImageCarousel } from "../imageCarousel";
 
 const menImages = [
+  "/ministry/men/WhatsApp Image 2025-11-06 at 10.34.33.jpeg",
   "/ministry/men/DSC_0575 copy.jpg",
   "/ministry/men/DSC_0599 copy.jpg",
   "/ministry/men/IMG-20250620-WA0013.jpg",

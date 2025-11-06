@@ -15,9 +15,10 @@ const pastorsData = [
   {
     name: "Rev. Francisca Njoku Andrew",
     description: [
-      "Reverend Francisca Njoku Andrew serves as the Co-Pastor of City of David Tabernacle, bringing a unique blend of spiritual insight and pastoral care to the ministry. With a profound calling to women's ministry and intercessory prayer, she has been instrumental in nurturing spiritual growth and fostering community within the church.",
-      "Her educational background includes theological studies and a degree in Business Administration, equipping her with both spiritual wisdom and organizational acumen. As a minister, she is known for her powerful teaching ministry, particularly in the areas of prayer, family life, and spiritual warfare.",
-      "Together with Bishop Joel Andrew, she has helped build a ministry that emphasizes healing, deliverance, and spiritual transformation. Her compassionate approach to ministry and dedication to prayer has made her a beloved spiritual mother to many in the congregation and beyond.",
+      "Reverend Francisca Njoku Andrew serves as the Co-Pastor of City of David Tabernacle, carrying a deep anointing for prayer, compassion, and mentorship. A true woman after God’s heart, she stands as a pillar of strength and intercession — a wailing woman whose prayers have birthed healing, deliverance, and restoration in countless lives.",
+      "A seasoned nurse with over 20 years of experience in the nursing field, Reverend Francisca embodies the heart of a caregiver both in the hospital and in the house of God. Her life reflects an unshakable passion for helping others — tending not only to physical wounds but also to the souls of those seeking comfort and hope.",
+      "Her ministry to young adults has become a beacon of guidance and grace, as she lovingly mentors them to discover their divine purpose and live out their faith boldly. Known for her fervent intercession, nurturing spirit, and motherly wisdom, she exemplifies the strength and virtue of a Proverbs 31 woman — clothed with dignity, compassion, and prayer.",
+      "Alongside Bishop Joel Andrew, Reverend Francisca has devoted her life to building a ministry that embodies healing, deliverance, and spiritual transformation. She is more than a pastor; she is a mother to many — leading with humility, wisdom, and a heart anchored in love and prayer.",
     ],
     image: "/about/PHOTO-2024-07-07-19-11-08 (1).jpg",
   },

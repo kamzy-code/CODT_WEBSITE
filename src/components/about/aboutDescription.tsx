@@ -7,10 +7,17 @@ import { ImageCarousel } from "../imageCarousel";
 const images = [
   "/about/IMG-20250825-WA0080.jpg",
   "/about/IMG-20250825-WA0084.jpg",
+  "/about/PHOTO-2024-06-09-14-59-25.jpg",
   "/home/377A6455.jpg",
   "/home/IMG-20250620-WA0019.jpg",
   "/home/IMG-20250825-WA0148.jpg",
+  "/about/PHOTO-2024-08-12-12-22-06.jpg",
   "/about/DSC_0403 copy.jpg",
+  "/ministry/youth/WhatsApp Image 2025-11-06 at 10.34.08.jpeg",
+  "/about/PHOTO-2024-04-29-05-11-17.jpg",
+  "/about/PHOTO-2024-08-12-12-22-06 (2).jpg",
+  "/about/PHOTO-2024-08-12-12-22-06 (1).jpg",
+
 ];
 
 export function AboutDescription() {
