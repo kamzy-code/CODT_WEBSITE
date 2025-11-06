@@ -19,11 +19,11 @@ export function Footer() {
               />
 
               <div className="text-white flex flex-col gap-1">
-                <h2 className="font-extrabold text-xl xl:text-2xl leading-5">
+                <h2 className="font-extrabold text-lg lg:text-2xl leading-5">
                   City of David Tabernacle
                 </h2>
-                <p className="text-xs  xl:text-sm w-[70%] sm:w-auto">
-                  Bringing Restoration to the Dying World
+                <p className="text-sm lg:text-lg w-[70%] sm:w-auto">
+                  Home of Restoration
                 </p>
               </div>
             </Link>
@@ -40,12 +40,29 @@ export function Footer() {
 
             <div className="text-sm text-white flex items-center gap-2">
               <MapPin className="w-6 h-6 text-primary-200" />
-              <p className="max-w-xs">7953 Annapolis Rd Lanham, MD 20706</p>
+              <p className="max-w-xs">
+                Worship Center - 7953 Annapolis Rd Lanham, MD 20706
+              </p>
+            </div>
+
+            <div className="text-sm text-white flex items-center gap-2">
+              <MapPin className="w-6 h-6 text-primary-200" />
+              <p className="max-w-xs">
+                Office - 7953 Annapolis Rd Lanham, MD 20706
+              </p>
             </div>
 
             <div className="text-sm text-white flex items-center gap-2">
               <Phone className="w-6 h-6 text-primary-200" />
               <span>
+                <p>240-965-7558</p>
+              </span>
+            </div>
+
+            <div className="text-sm text-white flex items-center gap-2">
+              <Phone className="w-6 h-6 text-primary-200" />
+              <span>
+                <p>Other Contacts</p>
                 <p>240-601-8936</p>
                 <p>202-763-9291</p>
               </span>

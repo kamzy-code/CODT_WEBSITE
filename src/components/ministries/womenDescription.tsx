@@ -15,13 +15,13 @@ const womenImages = [
   "/ministry/women/DSC_0785 copy.jpg",
   "/ministry/women/IMG-20250825-WA0157.jpg",
   "/ministry/women/PHOTO-2024-04-21-22-13-35.jpg",
-  "/ministry/women/PHOTO-2024-04-08-10-20-28 (1).jpg",
+ 
   "/ministry/women/PHOTO-2024-04-08-10-20-28 (2).jpg",
-  "/ministry/women/PHOTO-2024-04-08-10-20-28.jpg",
+
   "/ministry/women/PHOTO-2024-04-15-08-54-40.jpg",
   "/ministry/women/PHOTO-2024-04-15-08-44-49.jpg",
   "/ministry/women/PHOTO-2024-04-21-22-12-35 (1).jpg",
-  "/ministry/women/PHOTO-2024-04-21-22-12-35.jpg",
+  "/ministry/women/IMG-20250825-WA0059.jpg",
   "/ministry/women/PHOTO-2024-04-21-22-13-36.jpg",
 ];
 

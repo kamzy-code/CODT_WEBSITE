@@ -19,7 +19,7 @@ const ministryData = [
   },
   {
     title: "Youth Ministry",
-    img: "/home/PHOTO-2024-04-08-10-20-28 (1).jpg",
+    img: "/ministry/youth/WhatsApp Image 2025-11-06 at 10.34.08.jpeg",
     url: "/ministries/youth",
   },
   {

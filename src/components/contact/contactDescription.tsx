@@ -73,7 +73,7 @@ export function ContactDescription() {
                 <p className="font-bold text-primary-900  leading-8 md:leading-10">
                   Email:{" "}
                   <span className="font-medium text-dark">
-                    info@cityofdavidtabernacle.com
+                    victorychapelmd@gmail.com
                   </span>
                 </p>
               </div>

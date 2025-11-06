@@ -27,20 +27,7 @@ export const metadata: Metadata = {
   title: "City of David Tabernacle",
   description: "Bringing restoration to the dying world",
   icons: {
-    icon: [
-      {
-        url: "/codt_logo.png",
-        href: "/codt_logo.png",
-        sizes: "32x32",
-        type: "image/png",
-      },
-    ],
-    apple: {
-      url: "/codt_logo.png",
-      sizes: "180x180",
-      type: "image/png",
-    },
-    shortcut: "/codt_logo.png",
+    icon: "favicon.ico",
   },
 };
 

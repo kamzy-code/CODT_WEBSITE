@@ -24,11 +24,11 @@ export function Navbar() {
           />
 
           <div className="text-primary-900 flex flex-col">
-            <h2 className="font-extrabold text-xl xl:text-2xl leading-5">
+            <h2 className="font-extrabold text-lg lg:text-2xl leading-5">
               City of David Tabernacle
             </h2>
-            <p className="text-xs  xl:text-sm w-[70%] sm:w-auto">
-              Bringing Restoration to the Dying World
+            <p className="text-sm  lg:text-lg w-[70%] sm:w-auto">
+              Home of Restoration
             </p>
           </div>
         </Link>
