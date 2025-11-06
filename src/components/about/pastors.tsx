@@ -1,8 +1,6 @@
 "use client";
-import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import Image from "next/image";
-import { MapPin, Phone } from "lucide-react";
 
 const pastorsData = [
   {
@@ -26,13 +24,8 @@ const pastorsData = [
 ];
 
 export function PastorsDescription() {
-  const ref = useRef(null);
-  const isInView = true;
   return (
-    <section
-      ref={ref}
-      className="flex items-center justify-center section-padding"
-    >
+    <section className="flex items-center justify-center section-padding">
       <div className="container-max space-y-8">
         {pastorsData.map((pastor, idx) => {
           return (
@@ -42,9 +35,7 @@ export function PastorsDescription() {
             >
               <motion.div
                 initial={{ x: -50, opacity: 0 }}
-                animate={
-                  isInView ? { x: 0, opacity: 1 } : { x: -50, opacity: 0 }
-                }
+                animate={{ x: 0, opacity: 1 }}
                 transition={{ duration: 0.5 }}
                 className="w-full min-h-100 flex items-center justify-center bg-dark rounded-2xl overflow-hidden"
               >
@@ -59,9 +50,7 @@ export function PastorsDescription() {
 
               <motion.div
                 initial={{ x: 50, opacity: 0 }}
-                animate={
-                  isInView ? { x: 0, opacity: 1 } : { x: 50, opacity: 0 }
-                }
+                animate={{ x: 0, opacity: 1 }}
                 transition={{ duration: 0.5 }}
                 className="w-full h-full flex flex-col items-center lg:items-end justify-center"
               >
