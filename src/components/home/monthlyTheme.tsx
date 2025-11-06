@@ -27,9 +27,9 @@ export function MonthlyTheme() {
           initial={{ y: 50, opacity: 0 }}
           animate={isInView ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
-          className="font-black text-center text-primary-900 text-4xl md:text-6xl lg:text-8xl "
+          className="font-black text-center text-primary-900 text-2xl md:text-4xl xl:text-6xl "
         >
-          October Our Month of Increase
+          November - Divine Access Through Thanksgiving
         </motion.h2>
       </div>
     </section>

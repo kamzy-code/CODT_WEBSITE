@@ -63,7 +63,7 @@ export function BranchesDescription() {
                 className="w-full h-full flex flex-col items-center lg:items-end justify-center"
               >
                 <div className="space-y-5">
-                  <h3 className="font-extrabold text-primary-900 text-lg md:text-2xl">
+                  <h3 className="font-extrabold text-primary-900 text-2xl md:text-4xl">
                     {branch.name}
                   </h3>
 

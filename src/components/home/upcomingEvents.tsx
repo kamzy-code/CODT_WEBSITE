@@ -8,6 +8,7 @@ const images = [
   "/home/restoration_25.png",
   "/home/worship_experience.png",
   "/home/october.png",
+  "/home/WhatsApp Image 2025-11-01 at 20.47.54.jpeg"
 ];
 
 export function UpcomingEvents() {

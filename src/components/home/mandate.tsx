@@ -43,7 +43,7 @@ export function Mandate() {
             <h2 className="font-medium text-dark text-2xl md:text-4xl leading-10 md:leading-15">
               Bringing Restoration to Humanity and the Dying World.
             </h2>
-            <p className="font-medium text-dark text-lg md:text-xl leading-8 md:leading-10 text-justify lg:text-right">
+            <p className="font-medium text-dark text-lg md:text-xl leading-8 md:leading-10 text-center lg:text-right">
               City of David Tabernacle is more than a church it is a movement of
               restoration. Through the transforming power of the Word, prayer,
               and love, we are committed to rebuilding lives, families, and
