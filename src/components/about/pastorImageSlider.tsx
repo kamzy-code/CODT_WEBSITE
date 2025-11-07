@@ -4,7 +4,6 @@ const pastorImages = [
   "/about/pastor/PHOTO-2024-06-17-13-08-26.jpg",
   "/about/pastor/IMG-20250621-WA0026.jpg",
   "/about/pastor/WhatsApp Image 2025-11-06 at 13.10.45.jpeg",
-  "/about/pastor/WhatsApp Image 2025-11-06 at 13.10.46 (1).jpeg",
   "/about/pastor/WhatsApp Image 2025-11-06 at 13.10.46 (2).jpeg",
   "/about/pastor/WhatsApp Image 2025-11-06 at 13.10.47 (1).jpeg",
   "/about/pastor/WhatsApp Image 2025-11-06 at 13.10.47 (2).jpeg",

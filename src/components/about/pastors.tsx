@@ -20,7 +20,7 @@ const pastorsData = [
       "Her ministry to young adults has become a beacon of guidance and grace, as she lovingly mentors them to discover their divine purpose and live out their faith boldly. Known for her fervent intercession, nurturing spirit, and motherly wisdom, she exemplifies the strength and virtue of a Proverbs 31 woman — clothed with dignity, compassion, and prayer.",
       "Alongside Bishop Joel Andrew, Reverend Francisca has devoted her life to building a ministry that embodies healing, deliverance, and spiritual transformation. She is more than a pastor; she is a mother to many — leading with humility, wisdom, and a heart anchored in love and prayer.",
     ],
-    image: "/about/PHOTO-2024-07-07-19-11-08 (1).jpg",
+    image: "/about/pastor/WhatsApp Image 2025-11-06 at 13.10.46 (1).jpeg",
   },
 ];
 

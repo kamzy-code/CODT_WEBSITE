@@ -8,7 +8,7 @@ const CardData = [
   {
     title: "Worship Experience",
     description: "Join in our worship service every Sunday",
-    img: "/home/PHOTO-2024-04-08-10-18-11.jpg",
+    img: "/home/PHOTO-2024-04-08-10-18-11 2.jpg",
     time: {
       USA: "Sunday - 11AM",
       owerri: "Sunday - 4PM",
@@ -76,7 +76,7 @@ export function WorshipCards({scripture}:{scripture?: boolean}) {
             </div>
 
             <div className="flex gap-2 px-4 py-6">
-              <div className="h-20 w-1 bg-primary-900"></div>
+              <div className="h-22 w-1 bg-primary-900"></div>
 
               <div className="flex flex-col  gap-2">
                 <h2 className="text-dark font-medium uppercase text-md">
