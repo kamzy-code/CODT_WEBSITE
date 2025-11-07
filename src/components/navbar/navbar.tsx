@@ -14,7 +14,7 @@ export function Navbar() {
     <>
     <nav className="w-full h-24 flex items-center justify-center fixed top-0 bg-white backdrop-blur-md z-50 border-b border-gray-200">
       <div className="section-padding container-max flex justify-between w-full items-center">
-        <Link href={"/"} className=" flex gap-1 md:gap-2 items-center" onClick={()=>setIsOpen(false)}>
+        <Link href={"/"} className=" flex gap-1 md:gap-2 items-center " onClick={()=>setIsOpen(false)}>
           <Image
             src="/codt_logo.png"
             alt="Church Logo"
@@ -24,7 +24,7 @@ export function Navbar() {
           />
 
           <div className="text-primary-900 flex flex-col">
-            <h2 className="font-extrabold text-lg lg:text-2xl leading-5">
+            <h2 className="font-extrabold text-lg lg:text-2xl leading-6">
               City of David Tabernacle
             </h2>
             <p className="text-sm  lg:text-lg w-[70%] sm:w-auto">

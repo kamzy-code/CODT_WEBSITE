@@ -19,7 +19,7 @@ export function NavLinks() {
   };
 
   return (
-    <div className="flex items-center justify-center gap-6 xl:gap-8 ">
+    <div className="flex items-center justify-center gap-5  xl:gap-8 ">
       <Link
         href={"/"}
        

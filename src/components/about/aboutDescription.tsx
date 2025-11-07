@@ -3,6 +3,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
 import { ImageCarousel } from "../imageCarousel";
+import { ImageSlider } from "../imageSlider";
 
 const images = [
   "/about/IMG-20250825-WA0080.jpg",
@@ -17,7 +18,6 @@ const images = [
   "/about/PHOTO-2024-04-29-05-11-17.jpg",
   "/about/PHOTO-2024-08-12-12-22-06 (2).jpg",
   "/about/PHOTO-2024-08-12-12-22-06 (1).jpg",
-
 ];
 
 export function AboutDescription() {
@@ -31,20 +31,24 @@ export function AboutDescription() {
       ref={ref}
       className="flex items-center justify-center section-padding"
     >
-      <div className="container-max w-full grid grid-cols-1 gap-16 p-12">
+      <div className="container-max w-full flex flex-col gap-16 p-12">
         <motion.div
           initial={{ x: -50, opacity: 0 }}
           animate={isInView ? { x: 0, opacity: 1 } : { x: -50, opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="w-full flex items-center justify-center rounded-2xl"
+          className=""
         >
-          <div className="lg:scale-95 flex items-center justify-center">
+          {/* <div className="lg:scale-95 flex items-center justify-center">
             <ImageCarousel
               images={images}
               scale
               max_w="max-w-2xl"
               card_height="h-80 md:h-120"
             ></ImageCarousel>
+          </div> */}
+
+          <div className="scale-80 sm:scale-90 lg:scale-85 xl:scale-95 shrink-0">
+            <ImageSlider images={images}></ImageSlider>
           </div>
         </motion.div>
 

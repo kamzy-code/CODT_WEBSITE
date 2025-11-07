@@ -32,7 +32,7 @@ export function PastorsDescription() {
           return (
             <div
               key={idx}
-              className="w-full grid grid-cols-1 lg:grid-cols-2 gap-12 p-12"
+              className="w-full grid grid-cols-1 xl:grid-cols-2 gap-12 p-12"
             >
               <motion.div
                 initial={{ x: -50, opacity: 0 }}

@@ -84,7 +84,7 @@ export function BranchesDescription() {
           return (
             <div
               key={idx}
-              className="w-full grid grid-cols-1 lg:grid-cols-2 gap-16 py-12 px-4"
+              className="w-full grid grid-cols-1 lg:grid-cols-2 gap-16 py-12 px-8"
             >
               <motion.div
                 initial={{ x: -50, opacity: 0 }}
@@ -94,12 +94,12 @@ export function BranchesDescription() {
                 transition={{ duration: 0.5 }}
                 className="w-full flex items-center justify-center rounded-2xl"
               >
-                <div className="scale-80 sm:scale-90 lg:scale-95 h-80 md:h-120">
+                <div className="scale-80 sm:scale-90 lg:scale-85 xl:scale-95 h-80 md:h-120 shrink-0">
                   <ImageCarousel
                     images={branch.image}
                     scale
                     max_w="max-w-xs sm:max-w-md md:max-w-lg "
-                    card_height="h-80 md:h-120 w-100"
+                    card_height="h-100 md:h-120 w-100"
                   ></ImageCarousel>
                 </div>
               </motion.div>
