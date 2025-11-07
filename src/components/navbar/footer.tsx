@@ -35,20 +35,20 @@ export function Footer() {
 
           <div className=" flex flex-col gap-4">
             <h2 className="font-extrabold leading-5 text-white">
-              Victory Chapel
+              Restoration Chapel - USA
             </h2>
 
             <div className="text-sm text-white flex items-center gap-2">
-              <MapPin className="w-6 h-6 text-primary-200" />
+              <MapPin className="shrink-0 w-6 h-6 text-primary-200" />
               <p className="max-w-xs">
                 Worship Center - 7953 Annapolis Rd Lanham, MD 20706
               </p>
             </div>
 
             <div className="text-sm text-white flex items-center gap-2">
-              <MapPin className="w-6 h-6 text-primary-200" />
+              <MapPin className="shrink-0 w-6 h-6 text-primary-200" />
               <p className="max-w-xs">
-                Office - 7953 Annapolis Rd Lanham, MD 20706
+                Office - 5010 Sunnyside Avenue STE 309 Beltsville, MD 20705
               </p>
             </div>
 
@@ -96,11 +96,11 @@ export function Footer() {
 
           <div className=" flex flex-col gap-4">
             <h2 className="font-extrabold leading-5 text-white">
-              Restoration Chapel
+              Restoration Chapel - Owerri
             </h2>
 
             <div className="text-sm text-white flex items-center gap-2">
-              <MapPin className="w-6 h-6 text-primary-200" />
+              <MapPin className="shrink-0 w-6 h-6 text-primary-200" />
               <p className="max-w-xs">
                 Plot 271 Ikenegbu Layout, Beside Fidelity Bank, Ikenegbu, Owerri
                 Imo State.

@@ -25,11 +25,11 @@ export function MeetPastor() {
         >
           <div className="bg-white ">
             <Image
-              src={"/home/968b32b2-4bc8-45b9-ac53-2ebb993dbc0f.jpg"}
+              src={"/home/IMG-20251002-WA0005.jpg"}
               alt="Bishop Joel"
               width={500}
-              height={800}
-              className="object-cover transition-transform duration-300 hover:scale-110"
+              height={700}
+              className="object-cover transition-transform duration-300 max-h-180 hover:scale-110"
             />
           </div>
         </motion.div>

@@ -81,19 +81,28 @@ export function ContactDescription() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div className=" flex flex-col gap-4">
                   <h2 className="font-extrabold leading-5 text-primary-900">
-                    Victory Chapel
+                    Restoration Chapel - USA
                   </h2>
 
                   <div className="text-sm text-dark flex items-center gap-2">
                     <LocationEdit className="shrink-0 w-6 h-6 text-primary-900" />
                     <p className="max-w-xs">
-                      7953 Annapolis Rd Lanham, MD 20706
+                      Worship Center - 7953 Annapolis Rd Lanham, MD 20706
+                    </p>
+                  </div>
+
+                  <div className="text-sm text-dark flex items-center gap-2">
+                    <LocationEdit className="shrink-0 w-6 h-6 text-primary-900" />
+                    <p className="max-w-xs">
+                      Office - 5010 Sunnyside Avenue STE 309 Beltsville, MD
+                      20705
                     </p>
                   </div>
 
                   <div className="text-sm text-dark flex items-center gap-2">
                     <Phone className="w-6 h-6 text-primary-900" />
                     <span>
+                      <p>240-965-7558</p>
                       <p>240-601-8936</p>
                       <p>202-763-9291</p>
                     </span>
@@ -102,7 +111,7 @@ export function ContactDescription() {
 
                 <div className=" flex flex-col gap-4">
                   <h2 className="font-extrabold leading-5 text-primary-900">
-                    Restoration Chapel
+                    Restoration Chapel - Owerri
                   </h2>
 
                   <div className="text-sm text-dark flex items-center gap-2">

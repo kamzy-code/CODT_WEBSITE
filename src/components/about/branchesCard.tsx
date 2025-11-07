@@ -7,12 +7,12 @@ import Link from "next/link";
 
 const CardData = [
   {
-    title: "Victory Chapel",
+    title: "Restoration Chapel - USA",
     img: "/about/IMG-20250825-WA0084.jpg",
     url: "/the-church/branches",
   },
   {
-    title: "Restoration Chapel",
+    title: "Restoration Chapel - Owerri",
     img: "/about/DSC_0403 copy.jpg",
     url: "/the-church/branches",
   },

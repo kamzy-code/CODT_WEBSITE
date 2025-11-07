@@ -8,17 +8,17 @@ import { usePathname } from "next/navigation";
 
 const ministryData = [
   {
-    title: "Men Ministry",
+    title: "Men of Valor",
     img: "/home/IMG-20250620-WA0019.jpg",
     url: "/ministries/men",
   },
   {
-    title: "Women Ministry",
+    title: "Women of Purpose",
     img: "/home/IMG-20250825-WA0148.jpg",
     url: "/ministries/women",
   },
   {
-    title: "Youth Ministry",
+    title: "Youth in Christ",
     img: "/ministry/youth/WhatsApp Image 2025-11-06 at 10.34.08.jpeg",
     url: "/ministries/youth",
   },

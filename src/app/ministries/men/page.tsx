@@ -7,7 +7,7 @@ export default function About() {
     <div className="min-h-screen">
       <PageHeader
         title="Men Ministry"
-        description="Explore Men's Ministry"
+        description="Explore the Men of Valor"
       />
       <MenDescription></MenDescription>
       <ExploreMinistries></ExploreMinistries>
