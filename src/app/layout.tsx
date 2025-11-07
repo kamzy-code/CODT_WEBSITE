@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   title: "City of David Tabernacle",
   description: "Bringing restoration to the dying world",
   icons: {
-    icon: "favicon.ico",
+    icon: [{url:"favicon.ico", sizes:"48x48"}],
   },
 };
 
