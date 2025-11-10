@@ -1,6 +1,6 @@
 "use server";
 
-export type Error = {
+export type PrayerRequestError = {
   name?: string;
   email?: string;
   phone?: string;
@@ -11,17 +11,17 @@ export type Error = {
   prayer_request?: string;
 };
 
-export type FormState = {
+export type PrayerRequestFormState = {
   success: boolean;
-  errors?: Error;
+  errors?: PrayerRequestError;
   values?: Record<string, string>;
 };
 
 export async function sendPrayerRequest(
-  prevState: FormState | undefined,
+  prevState: PrayerRequestFormState | undefined,
   formData: FormData
 ) {
-  const errors: Error = {};
+  const errors: PrayerRequestError = {};
 
   const get = (key: string) => {
     const v = formData.get(key);
@@ -58,7 +58,7 @@ export async function sendPrayerRequest(
   };
 
   if (Object.keys(errors).length > 0) {
-    const response: FormState = { success: false, errors, values };
+    const response: PrayerRequestFormState = { success: false, errors, values };
     return response;
   }
 
@@ -85,5 +85,5 @@ export async function sendPrayerRequest(
   //   body: JSON.stringify({ name, email, phone, address, city, state, country, prayer_request }),
   // });
 
-  return { success: true, errors: {} } as FormState; // empty error object indicates success in your current types
+  return { success: true, errors: {} } as PrayerRequestFormState; // empty error object indicates success in your current types
 }

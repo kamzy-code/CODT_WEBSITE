@@ -1,9 +1,9 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { PrayerRequestForm } from "../forms/prayer-request";
+import { FirstTimerForm } from "../forms/first-timer";
 
-export function PrayerRequestComponent() {
+export function FirstTimerComponent() {
   return (
     <section className="flex items-center justify-center section-padding">
       <div className="container-max space-y-8">
@@ -15,8 +15,8 @@ export function PrayerRequestComponent() {
             className="w-full min-h-100 flex items-center justify-center rounded-2xl overflow-hidden"
           >
             <Image
-              src={"/resources/IMG-20250825-WA0120.jpg"}
-              alt={"Prayer Request Image"}
+              src={"/resources/IMG-20250825-WA0053.jpg"}
+              alt={"First Timer Image"}
               width={500}
               height={800}
               className="transform h-full w-full object-cover"
@@ -31,9 +31,9 @@ export function PrayerRequestComponent() {
           >
             <div className="space-y-6">
               <h3 className="font-extrabold text-primary-900 text-2xl md:text-4xl">
-                Prayer Request
+                First Timer
               </h3>
-              <PrayerRequestForm></PrayerRequestForm>
+              <FirstTimerForm></FirstTimerForm>
             </div>
           </motion.div>
         </div>

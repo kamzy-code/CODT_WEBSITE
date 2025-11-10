@@ -2,29 +2,30 @@
 import Form from "next/form";
 import { FormInput } from "../ui/formInput";
 import { TextArea } from "../ui/textArea";
-import { FormState, sendPrayerRequest } from "@/app/action/prayer-request";
+import { PrayerRequestFormState, sendPrayerRequest } from "@/app/action/prayer-request";
 import { useActionState } from "react";
 
 export function PrayerRequestForm() {
-  const initialFormState: FormState = {
+  const initialFormState: PrayerRequestFormState = {
     success: false,
     errors: {},
   };
   const [state, formAction, isPending] = useActionState(
-    async (prevState: FormState | undefined, formData: FormData) => {
-      return await sendPrayerRequest(prevState ?? initialFormState, formData);
-    },
+   sendPrayerRequest,
     initialFormState
   );
 
   return (
-    <Form action={formAction} className="grid grid-cols-2 gap-8 w-full">
+    <Form action={formAction} className="w-full">
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
+
       <FormInput
         title="Full Name"
         type="text"
         placeholder="Full Name"
         name="name"
-        colSpan="col-span-2"
+        colSpan="md:col-span-2"
         compulsory
         error={state?.errors?.name}
         defaultValue={state?.values?.name}
@@ -95,18 +96,19 @@ export function PrayerRequestForm() {
         placeholder="What would you like us to pray about"
         name="prayer_request"
         compulsory
-        colSpan="col-span-2"
+        colSpan="md:col-span-2"
         error={state?.errors?.prayer_request}
         defaultValue={state?.values?.prayer_request}
       />
 
       <button
-        className="btn-primary hover:bg-red-600 h-12 col-span-2 disabled:bg-gray-200 disabled:text-dark"
+        className="btn-primary hover:bg-red-600 active:bg-red-600 h-12 md:col-span-2 disabled:bg-gray-200 disabled:text-dark"
         type="submit"
         disabled={isPending}
       >
         {isPending ? "Sending..." : "Send my prayer" }
       </button>
+      </div>
     </Form>
   );
 }
