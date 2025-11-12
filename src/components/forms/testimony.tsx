@@ -5,7 +5,11 @@ import { TextArea } from "../ui/textArea";
 import { useActionState } from "react";
 import { useState, useRef, useTransition } from "react";
 import type { UploadResult, FileUploadHandle } from "../ui/fileUplaod";
-import { sendTestimonyForm, TestimonyFormState } from "@/app/action/testimony";
+import {
+  sendTestimonyForm,
+  TestimonyError,
+  TestimonyFormState,
+} from "@/app/action/testimony";
 import { FileUpload } from "../ui/fileUplaod";
 
 export function TestimonyForm() {
@@ -19,13 +23,14 @@ export function TestimonyForm() {
   );
 
   const fileUploadRef = useRef<FileUploadHandle | null>(null);
-  const [uploadProgress, setUploadProgress] = useState<
-    Record<number, number>
-  >({});
+  const [uploadProgress, setUploadProgress] = useState<Record<number, number>>(
+    {}
+  );
   const [uploadedFiles, setUploadedFiles] = useState<UploadResult[]>([]);
   const [uploading, setUploading] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [isClientTransitionPending, startClientTransition] = useTransition(); // this tracks the manual action invocation so React's pending state stays accurate
+  const [errors, setErrors] = useState<TestimonyError>({});
 
   function validateForm(formEl: HTMLFormElement) {
     const fd = new FormData(formEl);
@@ -38,16 +43,18 @@ export function TestimonyForm() {
     const country = (fd.get("country") ?? "").toString().trim();
     const testimony = (fd.get("testimony") ?? "").toString().trim();
 
-    if (
-      !name ||
-      !email ||
-      !phone ||
-      !address ||
-      !city ||
-      !state ||
-      !country ||
-      !testimony
-    ) {
+    const errors: TestimonyError = {};
+    if (!name) errors.name = "This field is required";
+    if (!email) errors.email = "This field is required";
+    if (!phone) errors.phone = "This field is required";
+    if (!address) errors.address = "This field is required";
+    if (!city) errors.city = "This field is required";
+    if (!state) errors.state = "This field is required";
+    if (!country) errors.country = "This field is required";
+    if (!testimony) errors.testimony = "This field is required";
+
+    setErrors(errors);
+    if (Object.keys(errors).length > 0) {
       return { ok: false, message: "Please fill required fields" }; // this short-circuits on any missing required data
     }
 
@@ -88,9 +95,9 @@ export function TestimonyForm() {
       startClientTransition(() => {
         formAction(formData); // this triggers the server action inside a transition to keep isPending in sync
       });
+      form.reset();
     } catch (err) {
-      const message =
-        err instanceof Error ? err.message : "Upload failed";
+      const message = err instanceof Error ? err.message : "Upload failed";
       setSubmitError(message);
       console.error(err);
     } finally {
@@ -109,7 +116,7 @@ export function TestimonyForm() {
           theme="light"
           colSpan="md:col-span-2"
           compulsory
-          error={newFormState?.errors?.name}
+          error={newFormState?.errors?.name || errors.name}
           defaultValue={newFormState?.values?.name}
         />
 
@@ -120,7 +127,7 @@ export function TestimonyForm() {
           name="email"
           theme="light"
           compulsory
-          error={newFormState?.errors?.email}
+          error={newFormState?.errors?.email || errors.email}
           defaultValue={newFormState?.values?.email}
         />
 
@@ -131,7 +138,7 @@ export function TestimonyForm() {
           name="phone"
           theme="light"
           compulsory
-          error={newFormState?.errors?.phone}
+          error={newFormState?.errors?.phone || errors.phone}
           defaultValue={newFormState?.values?.phone}
         />
 
@@ -142,7 +149,7 @@ export function TestimonyForm() {
           name="address"
           theme="light"
           compulsory
-          error={newFormState?.errors?.address}
+          error={newFormState?.errors?.address || errors.address}
           defaultValue={newFormState?.values?.address}
         />
 
@@ -153,7 +160,7 @@ export function TestimonyForm() {
           name="city"
           theme="light"
           compulsory
-          error={newFormState?.errors?.city}
+          error={newFormState?.errors?.city || errors.city}
           defaultValue={newFormState?.values?.city}
         />
 
@@ -164,7 +171,7 @@ export function TestimonyForm() {
           name="state"
           theme="light"
           compulsory
-          error={newFormState?.errors?.state}
+          error={newFormState?.errors?.state || errors.state}
           defaultValue={newFormState?.values?.state}
         />
 
@@ -175,7 +182,7 @@ export function TestimonyForm() {
           name="country"
           theme="light"
           compulsory
-          error={newFormState?.errors?.country}
+          error={newFormState?.errors?.country  || errors.country}
           defaultValue={newFormState?.values?.country}
         />
 
@@ -186,7 +193,7 @@ export function TestimonyForm() {
           theme="light"
           compulsory
           colSpan="md:col-span-2"
-          error={newFormState?.errors?.testimony}
+          error={newFormState?.errors?.testimony || errors.testimony}
           defaultValue={newFormState?.values?.testimony}
         />
 
@@ -199,7 +206,9 @@ export function TestimonyForm() {
         {uploading && (
           <div className="md:col-span-2 space-y-1 text-sm text-primary-200">
             {Object.entries(uploadProgress).map(([index, percent]) => (
-              <p key={index}>{`Uploading file ${Number(index) + 1}: ${percent}%`}</p>
+              <p
+                key={index}
+              >{`Uploading file ${Number(index) + 1}: ${percent}%`}</p>
             ))}
             {Object.keys(uploadProgress).length === 0 && (
               <p>Preparing uploads...</p>
@@ -212,7 +221,9 @@ export function TestimonyForm() {
             <p>Files attached:</p>
             <ul className="list-disc list-inside">
               {uploadedFiles.map((file) => (
-                <li key={file.path}>{file.path.split("/").pop() ?? file.path}</li> // simple confirmation of files attached after upload completes
+                <li key={file.path}>
+                  {file.path.split("/").pop() ?? file.path}
+                </li> // simple confirmation of files attached after upload completes
               ))}
             </ul>
           </div>
@@ -230,10 +241,10 @@ export function TestimonyForm() {
           {uploading
             ? "Uploading..."
             : isPending
-            ? "Sending..."
-            : isClientTransitionPending
-            ? "Submitting..."
-            : "Share My Testimony"}
+              ? "Sending..."
+              : isClientTransitionPending
+                ? "Submitting..."
+                : "Share My Testimony"}
         </button>
       </div>
     </Form>
