@@ -39,21 +39,29 @@ export function TestimonyForm() {
     const country = (fd.get("country") ?? "").toString().trim();
     const testimony = (fd.get("testimony") ?? "").toString().trim();
 
-    if (!name || !email || phone || address || city || state || country || !testimony) {
+    if (
+      !name ||
+      !email ||
+      phone ||
+      address ||
+      city ||
+      state ||
+      country ||
+      !testimony
+    ) {
       return { ok: false, message: "Please fill required fields" };
     }
 
     return { ok: true };
   }
 
- const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setSubmitError(null);
     const form = e.currentTarget;
     const validation = validateForm(form);
     if (!validation.ok) {
-      // setSubmitError(validation.message as string);
-      form.requestSubmit();
+      setSubmitError(validation.message as string);
       return;
     }
 
@@ -89,9 +97,9 @@ export function TestimonyForm() {
       // Option A: call fetch to an API route (recommended)
       // Option B: create a hidden submit to trigger <Form action={formAction}>
       form.requestSubmit(); // triggers the <Form action={formAction}> flow
-    } catch (err: any) {
+    } catch (err: unknown) {
       setUploading(false);
-      setSubmitError(err?.message ?? "Upload failed");
+      setSubmitError(err instanceof Error ? err.message : "Upload failed");
       console.error(err);
     }
   };
@@ -189,36 +197,39 @@ export function TestimonyForm() {
         />
 
         <FileUpload
-          fileError={newFormState.errors?.testimony_files}
-          isPending={isPending}
-          onUploaded={handleUploaded}
-        ></FileUpload>
+          ref={fileUploadRef}
+          onProgress={(index, percent) => {
+            setUploadProgress((prev) => ({ ...prev, [index]: percent }));
+          }}
+        />
 
-        {uploads.length > 0 &&
-          uploads.map((u, i) => (
-            <input
-              key={u.path + i}
-              type="hidden"
-              name="uploaded_paths[]"
-              value={u.path}
+        {uploading && (
+          <div className="mt-2">
+            <div>Uploading files...</div>
+            {/* overall percent from per-file progress */}
+            <progress
+              value={
+                Object.values(uploadProgress).length
+                  ? Math.round(
+                      Object.values(uploadProgress).reduce((a, b) => a + b, 0) /
+                        Object.values(uploadProgress).length
+                    )
+                  : 0
+              }
+              max={100}
+              className="w-full"
             />
-          ))}
-        {uploads.length > 0 &&
-          uploads.map((u, i) => (
-            <input
-              key={u.url + i}
-              type="hidden"
-              name="uploaded_urls[]"
-              value={u.url}
-            />
-          ))}
+          </div>
+        )}
+
+        {submitError && <div className="text-red-500 mt-2">{submitError}</div>}
 
         <button
           className="btn-secondary hover:bg-white hover:text-dark active:bg-white active:text-dark  h-12 md:col-span-2 disabled:bg-gray-200 disabled:text-dark"
           type="submit"
-          disabled={isPending}
+          disabled={isPending || uploading}
         >
-          {isPending ? "Sending..." : "Share My Testimony"}
+          {isPending || uploading ? "Sending..." : "Share My Testimony"}
         </button>
       </div>
     </Form>
