@@ -25,7 +25,7 @@ export function TestimonyForm() {
   const [uploadedFiles, setUploadedFiles] = useState<UploadResult[]>([]);
   const [uploading, setUploading] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
-  const [isClientTransitionPending, startClientTransition] = useTransition(); // track the manual action invocation so React's pending state stays accurate
+  const [isClientTransitionPending, startClientTransition] = useTransition(); // this tracks the manual action invocation so React's pending state stays accurate
 
   function validateForm(formEl: HTMLFormElement) {
     const fd = new FormData(formEl);
@@ -48,14 +48,14 @@ export function TestimonyForm() {
       !country ||
       !testimony
     ) {
-      return { ok: false, message: "Please fill required fields" }; // short-circuit on any missing required data
+      return { ok: false, message: "Please fill required fields" }; // this short-circuits on any missing required data
     }
 
     return { ok: true };
   }
 
   const handleUploadProgress = (fileIndex: number, percent: number) => {
-    setUploadProgress((prev) => ({ ...prev, [fileIndex]: percent })); // bubble upload progress back into the UI
+    setUploadProgress((prev) => ({ ...prev, [fileIndex]: percent })); // this bubbles upload progress back into the UI
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -75,7 +75,7 @@ export function TestimonyForm() {
     try {
       const fileHandle = fileUploadRef.current;
       if (fileHandle) {
-        results = await fileHandle.startUpload("testimonies"); // wait for storage upload before submitting
+        results = await fileHandle.startUpload("testimonies"); // this waits for storage upload before submitting
         setUploadedFiles(results);
       }
 
@@ -86,7 +86,7 @@ export function TestimonyForm() {
       }
 
       startClientTransition(() => {
-        formAction(formData); // trigger the server action inside a transition to keep isPending in sync
+        formAction(formData); // this triggers the server action inside a transition to keep isPending in sync
       });
     } catch (err) {
       const message =
