@@ -40,6 +40,12 @@ export async function sendTestimonyForm(
   const country = get("country");
   const testimony = get("testimony");
   const testimony_files = formData.getAll("testimony_files") as File[];
+  const uploaded_paths = formData
+    .getAll("uploaded_paths[]")
+    .map((v) => String(v)); //this is populated by the client when files are uploaded successfully
+  const uploaded_urls = formData
+    .getAll("uploaded_urls[]")
+    .map((v) => String(v)); //these are the matching public URLs for those uploaded files
 
   if (!name) errors.name = "This field is required";
   if (!email) errors.email = "This field is required";
@@ -84,7 +90,19 @@ export async function sendTestimonyForm(
 
   await new Promise((resolve) => setTimeout(() => resolve(100), 3000));
 
-  console.log(name, email, phone, address, city, state, country);
+  console.log("[sendTestimonyForm] Submission received", {
+    name,
+    email,
+    phone,
+    address,
+    city,
+    state,
+    country, 
+    testimonyPreview: testimony.slice(0, 50), // this logs only the first 50 chars so we do not spam the console
+    uploaded_paths,
+    uploaded_urls,
+    receivedFileCount: testimony_files?.length ?? 0,
+  });
   // At this point the form is valid. Perform the server-side action you need here.
   // For example, save to a database, call an API, or send an email.
   // This implementation simply returns a success shape. Replace with real logic as needed.

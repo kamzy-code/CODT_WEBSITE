@@ -3,8 +3,8 @@ import Form from "next/form";
 import { FormInput } from "../ui/formInput";
 import { TextArea } from "../ui/textArea";
 import { useActionState } from "react";
-import { useState, useRef } from "react";
-import { FileUploadHandle } from "../ui/fileUplaod";
+import { useState, useRef, useTransition } from "react";
+import type { UploadResult, FileUploadHandle } from "../ui/fileUplaod";
 import { sendTestimonyForm, TestimonyFormState } from "@/app/action/testimony";
 import { FileUpload } from "../ui/fileUplaod";
 
@@ -19,14 +19,13 @@ export function TestimonyForm() {
   );
 
   const fileUploadRef = useRef<FileUploadHandle | null>(null);
-  const [uploadProgress, setUploadProgress] = useState<Record<number, number>>(
-    {}
-  );
-  const [uploadedFiles, setUploadedFiles] = useState<
-    Array<{ path: string; url: string }>
-  >([]);
+  const [uploadProgress, setUploadProgress] = useState<
+    Record<number, number>
+  >({});
+  const [uploadedFiles, setUploadedFiles] = useState<UploadResult[]>([]);
   const [uploading, setUploading] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [isClientTransitionPending, startClientTransition] = useTransition(); // this tracks the manual action invocation so React's pending state stays accurate
 
   function validateForm(formEl: HTMLFormElement) {
     const fd = new FormData(formEl);
@@ -42,18 +41,22 @@ export function TestimonyForm() {
     if (
       !name ||
       !email ||
-      phone ||
-      address ||
-      city ||
-      state ||
-      country ||
+      !phone ||
+      !address ||
+      !city ||
+      !state ||
+      !country ||
       !testimony
     ) {
-      return { ok: false, message: "Please fill required fields" };
+      return { ok: false, message: "Please fill required fields" }; // this short-circuits on any missing required data
     }
 
     return { ok: true };
   }
+
+  const handleUploadProgress = (fileIndex: number, percent: number) => {
+    setUploadProgress((prev) => ({ ...prev, [fileIndex]: percent })); // this bubbles upload progress back into the UI
+  };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -65,42 +68,33 @@ export function TestimonyForm() {
       return;
     }
 
-    // If there are files in the FileUpload, start upload
+    setUploading(true);
+    setUploadProgress({});
+    let results: UploadResult[] = [];
+
     try {
       const fileHandle = fileUploadRef.current;
       if (fileHandle) {
-        setUploading(true);
-        const results = await fileHandle.startUpload("testimonies");
+        results = await fileHandle.startUpload("testimonies"); // this waits for storage upload before submitting
         setUploadedFiles(results);
-        setUploading(false);
       }
 
-      // Append hidden inputs to the form so the server action receives uploaded paths
-      // You can also call an API route directly via fetch(JSON)
-      // Add inputs for each uploaded path
-      for (const r of uploadedFiles) {
-        const pathInput = document.createElement("input");
-        pathInput.type = "hidden";
-        pathInput.name = "uploaded_paths[]";
-        pathInput.value = r.path;
-        form.appendChild(pathInput);
-
-        const urlInput = document.createElement("input");
-        urlInput.type = "hidden";
-        urlInput.name = "uploaded_urls[]";
-        urlInput.value = r.url;
-        form.appendChild(urlInput);
+      const formData = new FormData(form);
+      for (const r of results) {
+        formData.append("uploaded_paths[]", r.path);
+        formData.append("uploaded_urls[]", r.url);
       }
 
-      // After uploads finished and metadata appended submit the form using formAction
-      // Using next/form's action requires form submission: calling formAction via the action prop is handled by <Form action={formAction}>. To integrate with that, we can programmatically submit here:
-      // Option A: call fetch to an API route (recommended)
-      // Option B: create a hidden submit to trigger <Form action={formAction}>
-      form.requestSubmit(); // triggers the <Form action={formAction}> flow
-    } catch (err: unknown) {
-      setUploading(false);
-      setSubmitError(err instanceof Error ? err.message : "Upload failed");
+      startClientTransition(() => {
+        formAction(formData); // this triggers the server action inside a transition to keep isPending in sync
+      });
+    } catch (err) {
+      const message =
+        err instanceof Error ? err.message : "Upload failed";
+      setSubmitError(message);
       console.error(err);
+    } finally {
+      setUploading(false);
     }
   };
 
@@ -160,7 +154,7 @@ export function TestimonyForm() {
           theme="light"
           compulsory
           error={newFormState?.errors?.city}
-          defaultValue={newFormState?.values?.name}
+          defaultValue={newFormState?.values?.city}
         />
 
         <FormInput
@@ -193,43 +187,53 @@ export function TestimonyForm() {
           compulsory
           colSpan="md:col-span-2"
           error={newFormState?.errors?.testimony}
-          defaultValue={newFormState?.values?.prayer_request}
+          defaultValue={newFormState?.values?.testimony}
         />
 
         <FileUpload
           ref={fileUploadRef}
-          onProgress={(index, percent) => {
-            setUploadProgress((prev) => ({ ...prev, [index]: percent }));
-          }}
-        />
+          fileError={newFormState.errors?.testimony_files}
+          onProgress={handleUploadProgress}
+        ></FileUpload>
 
         {uploading && (
-          <div className="mt-2">
-            <div>Uploading files...</div>
-            {/* overall percent from per-file progress */}
-            <progress
-              value={
-                Object.values(uploadProgress).length
-                  ? Math.round(
-                      Object.values(uploadProgress).reduce((a, b) => a + b, 0) /
-                        Object.values(uploadProgress).length
-                    )
-                  : 0
-              }
-              max={100}
-              className="w-full"
-            />
+          <div className="md:col-span-2 space-y-1 text-sm text-primary-200">
+            {Object.entries(uploadProgress).map(([index, percent]) => (
+              <p key={index}>{`Uploading file ${Number(index) + 1}: ${percent}%`}</p>
+            ))}
+            {Object.keys(uploadProgress).length === 0 && (
+              <p>Preparing uploads...</p>
+            )}
           </div>
         )}
 
-        {submitError && <div className="text-red-500 mt-2">{submitError}</div>}
+        {uploadedFiles.length > 0 && !uploading && (
+          <div className="md:col-span-2 text-sm text-primary-200 space-y-1">
+            <p>Files attached:</p>
+            <ul className="list-disc list-inside">
+              {uploadedFiles.map((file) => (
+                <li key={file.path}>{file.path.split("/").pop() ?? file.path}</li> // simple confirmation of files attached after upload completes
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {submitError && (
+          <p className="md:col-span-2 text-sm text-red-600">{submitError}</p>
+        )}
 
         <button
           className="btn-secondary hover:bg-white hover:text-dark active:bg-white active:text-dark  h-12 md:col-span-2 disabled:bg-gray-200 disabled:text-dark"
           type="submit"
-          disabled={isPending || uploading}
+          disabled={isPending || uploading || isClientTransitionPending}
         >
-          {isPending || uploading ? "Sending..." : "Share My Testimony"}
+          {uploading
+            ? "Uploading..."
+            : isPending
+            ? "Sending..."
+            : isClientTransitionPending
+            ? "Submitting..."
+            : "Share My Testimony"}
         </button>
       </div>
     </Form>
