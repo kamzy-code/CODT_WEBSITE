@@ -1,20 +1,16 @@
 "use client";
 import Form from "next/form";
 import { FormInput } from "../ui/formInput";
-import { TextArea } from "../ui/textArea";
-import {
-  PrayerRequestFormState,
-  sendPrayerRequest,
-} from "@/app/action/prayer-request";
 import { useActionState } from "react";
+import { FirstTimerFormState, sendFirstTimerForm } from "@/app/action/first-timer";
 
 export function FirstTimerForm() {
-  const initialFormState: PrayerRequestFormState = {
+  const initialFormState: FirstTimerFormState = {
     success: false,
     errors: {},
   };
   const [state, formAction, isPending] = useActionState(
-    sendPrayerRequest,
+    sendFirstTimerForm,
     initialFormState
   );
 

@@ -1,19 +1,16 @@
 "use client";
 import Form from "next/form";
 import { FormInput } from "../ui/formInput";
-import {
-  PrayerRequestFormState,
-  sendPrayerRequest,
-} from "@/app/action/prayer-request";
 import { useActionState } from "react";
+import { AlterCallFormState, sendAlterCallForm } from "@/app/action/alter-call";
 
 export function AlterCallForm() {
-  const initialFormState: PrayerRequestFormState = {
+  const initialFormState: AlterCallFormState = {
     success: false,
     errors: {},
   };
   const [state, formAction, isPending] = useActionState(
-    sendPrayerRequest,
+    sendAlterCallForm,
     initialFormState
   );
 
