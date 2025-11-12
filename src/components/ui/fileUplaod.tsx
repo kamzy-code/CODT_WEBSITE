@@ -1,7 +1,7 @@
 "use client";
 import { X } from "lucide-react";
 import { useRef, useState, forwardRef, useImperativeHandle } from "react";
-import { storage } from "@/firebaseConfig";
+import { storage } from "@/lib/firebaseConfig";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 
 export type UploadResult = { path: string; url: string };
@@ -13,14 +13,13 @@ export type FileUploadHandle = {
 export const FileUpload = forwardRef<
   FileUploadHandle,
   {
-    fileError?: string;
     maxFiles?: number;
     maxSizeBytes?: number;
     onProgress?: (fileIndex: number, percent: number) => void;
   }
 >(
   (
-    { fileError, maxFiles = 5, maxSizeBytes = 10 * 1024 * 1024, onProgress },
+    { maxFiles = 5, maxSizeBytes = 10 * 1024 * 1024, onProgress },
     reff
   ) => {
     const [files, setFiles] = useState<File[]>([]);
@@ -126,7 +125,10 @@ export const FileUpload = forwardRef<
 
         // Clear selected files after upload
         setFiles([]);
-        if (inputRef.current) inputRef.current.value = "";
+        if (inputRef.current) {
+            const dt = new DataTransfer();
+            inputRef.current.files = dt.files;
+        }
 
         return successes;
       },
@@ -148,7 +150,6 @@ export const FileUpload = forwardRef<
         <p className="text-xs text-white">
           Upload up to 5 files. PDF | JPG | PNG or video. Max 10 MB per file.
         </p>
-        {fileError && <p className="text-xs text-red-600">{fileError}</p>}
         {files.length > 0 && (
           <div className="mt-2 flex flex-wrap gap-2">
             {files.map((file, idx) => (

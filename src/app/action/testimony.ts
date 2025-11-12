@@ -9,7 +9,6 @@ export type TestimonyError = {
   state?: string;
   country?: string;
   testimony?: string;
-  testimony_files?: string;
 };
 
 export type TestimonyFormState = {
@@ -39,7 +38,6 @@ export async function sendTestimonyForm(
   const state = get("state");
   const country = get("country");
   const testimony = get("testimony");
-  const testimony_files = formData.getAll("testimony_files") as File[];
   const uploaded_paths = formData
     .getAll("uploaded_paths[]")
     .map((v) => String(v)); //this is populated by the client when files are uploaded successfully
@@ -67,22 +65,6 @@ export async function sendTestimonyForm(
     testimony,
   };
 
-  if (testimony_files) {
-    if (testimony_files.length > 5) {
-      errors.testimony_files = `You exceeded the limit of 5 files`;
-      const response: TestimonyFormState = { success: false, errors, values };
-      return response;
-    }
-    // Iterate and Validate
-    for (const file of testimony_files) {
-      if (file.size > MAX_FILE_SIZE_BYTES) {
-        errors.testimony_files = `File **${file.name}** exceeds the 10MB limit.`;
-        const response: TestimonyFormState = { success: false, errors, values };
-        return response;
-      }
-    }
-  }
-
   if (Object.keys(errors).length > 0) {
     const response: TestimonyFormState = { success: false, errors, values };
     return response;
@@ -97,11 +79,10 @@ export async function sendTestimonyForm(
     address,
     city,
     state,
-    country, 
+    country,
     testimonyPreview: testimony.slice(0, 50), // this logs only the first 50 chars so we do not spam the console
     uploaded_paths,
     uploaded_urls,
-    receivedFileCount: testimony_files?.length ?? 0,
   });
   // At this point the form is valid. Perform the server-side action you need here.
   // For example, save to a database, call an API, or send an email.

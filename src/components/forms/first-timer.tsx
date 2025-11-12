@@ -95,6 +95,10 @@ export function FirstTimerForm() {
         >
           {isPending ? "Sending..." : "I'm Glad To Worship Here"}
         </button>
+
+        {state?.success && (
+          <div className="text-green-600 text-center w-full flex items-center justify-center md:col-span-2">✓ Your request has been submitted successfully!</div>
+        )}
       </div>
     </Form>
   );

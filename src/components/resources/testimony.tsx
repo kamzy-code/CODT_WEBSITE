@@ -16,8 +16,8 @@ export function TestimonyComponent() {
             className="w-full min-h-100 flex items-center justify-center rounded-2xl overflow-hidden"
           >
             <Image
-              src={"/resources/IMG-20250825-WA0137.jpg"}
-              alt={"First Timer Image"}
+              src={"/resources/PHOTO-2024-04-15-08-44-49.jpg"}
+              alt={"Testimony Image"}
               width={500}
               height={800}
               className="transform h-full w-full object-cover"

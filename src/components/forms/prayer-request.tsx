@@ -107,7 +107,13 @@ export function PrayerRequestForm() {
         disabled={isPending}
       >
         {isPending ? "Sending..." : "Send my prayer" }
+
+        
       </button>
+
+      {state?.success && (
+          <div className="text-green-600 w-full text-center flex items-center justify-center md:col-span-2">✓ Prayer request sent successfully!</div>
+        )}
       </div>
     </Form>
   );

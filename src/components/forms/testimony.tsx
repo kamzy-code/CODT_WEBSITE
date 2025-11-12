@@ -3,7 +3,7 @@ import Form from "next/form";
 import { FormInput } from "../ui/formInput";
 import { TextArea } from "../ui/textArea";
 import { useActionState } from "react";
-import { useState, useRef, useTransition } from "react";
+import { useState, useEffect, useRef, useTransition } from "react";
 import type { UploadResult, FileUploadHandle } from "../ui/fileUplaod";
 import {
   sendTestimonyForm,
@@ -11,6 +11,7 @@ import {
   TestimonyFormState,
 } from "@/app/action/testimony";
 import { FileUpload } from "../ui/fileUplaod";
+import { form } from "framer-motion/client";
 
 export function TestimonyForm() {
   const initialFormState: TestimonyFormState = {
@@ -22,6 +23,7 @@ export function TestimonyForm() {
     initialFormState
   );
 
+  const formRef = useRef<HTMLFormElement | null>(null);
   const fileUploadRef = useRef<FileUploadHandle | null>(null);
   const [uploadProgress, setUploadProgress] = useState<Record<number, number>>(
     {}
@@ -95,7 +97,6 @@ export function TestimonyForm() {
       startClientTransition(() => {
         formAction(formData); // this triggers the server action inside a transition to keep isPending in sync
       });
-      form.reset();
     } catch (err) {
       const message = err instanceof Error ? err.message : "Upload failed";
       setSubmitError(message);
@@ -105,8 +106,33 @@ export function TestimonyForm() {
     }
   };
 
+  useEffect(() => {
+    if (
+      !uploading &&
+      !isPending &&
+      !isClientTransitionPending &&
+      newFormState.success &&
+      formRef.current
+    ) {
+      formRef.current.reset();
+      setUploadedFiles([]);
+      setErrors({});
+    }
+  }, [
+    isPending,
+    uploading,
+    isClientTransitionPending,
+    newFormState.success,
+    formRef,
+  ]);
+
   return (
-    <Form action={formAction} onSubmit={handleSubmit} className="w-full">
+    <Form
+      ref={formRef}
+      action={formAction}
+      onSubmit={handleSubmit}
+      className="w-full"
+    >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
         <FormInput
           title="Full Name"
@@ -182,7 +208,7 @@ export function TestimonyForm() {
           name="country"
           theme="light"
           compulsory
-          error={newFormState?.errors?.country  || errors.country}
+          error={newFormState?.errors?.country || errors.country}
           defaultValue={newFormState?.values?.country}
         />
 
@@ -199,7 +225,6 @@ export function TestimonyForm() {
 
         <FileUpload
           ref={fileUploadRef}
-          fileError={newFormState.errors?.testimony_files}
           onProgress={handleUploadProgress}
         ></FileUpload>
 
@@ -246,6 +271,10 @@ export function TestimonyForm() {
                 ? "Submitting..."
                 : "Share My Testimony"}
         </button>
+
+        {newFormState?.success && (
+          <div className="text-green-600 text-center w-full flex items-center justify-center md:col-span-2">✓ Testimony sent successfully!</div>
+        )}
       </div>
     </Form>
   );

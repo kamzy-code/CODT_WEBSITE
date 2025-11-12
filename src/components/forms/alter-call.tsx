@@ -95,6 +95,10 @@ export function AlterCallForm() {
         >
           {isPending ? "Sending..." : "Let's Get You Started"}
         </button>
+
+        {state?.success && (
+            <div className="text-green-600 w-full text-center flex items-center justify-center md:col-span-2">✓ Your request has been submitted successfully!</div>
+        )}
       </div>
     </Form>
   );
