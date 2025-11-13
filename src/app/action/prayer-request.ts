@@ -1,5 +1,7 @@
 "use server";
 
+import { sendPrayerRequestMail } from "@/lib/sendEmail";
+
 export type PrayerRequestError = {
   name?: string;
   email?: string;
@@ -9,6 +11,7 @@ export type PrayerRequestError = {
   state?: string;
   country?: string;
   prayer_request?: string;
+  submitError?: string;
 };
 
 export type PrayerRequestFormState = {
@@ -62,28 +65,19 @@ export async function sendPrayerRequest(
     return response;
   }
 
-  await new Promise((resolve) => setTimeout(() => resolve(100), 3000));
-
-  console.log(
-    name,
-    email,
-    phone,
-    address,
-    city,
-    state,
-    country,
-    prayer_request
-  );
-  // At this point the form is valid. Perform the server-side action you need here.
-  // For example, save to a database, call an API, or send an email.
-  // This implementation simply returns a success shape. Replace with real logic as needed.
-
-  // Example: send to an internal API route (uncomment and adapt if you have one)
-  // await fetch("/api/prayer-requests", {
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/json" },
-  //   body: JSON.stringify({ name, email, phone, address, city, state, country, prayer_request }),
-  // });
-
-  return { success: true, errors: {} } as PrayerRequestFormState; // empty error object indicates success in your current types
+  try {
+    await sendPrayerRequestMail(values);
+    return { success: true, errors: {} } as PrayerRequestFormState; // empty error object indicates success in your current types
+  } catch (error) {
+    const message =
+      error instanceof Error ? error.message : "Failed to send Prayer Request";
+    console.error("Error sending prayer request email:", message);
+    return {
+      success: false,
+      errors: {
+        submitError: "Error Submitting Prayer Request, Please try again",
+      },
+      values,
+    } as PrayerRequestFormState;
+  }
 }

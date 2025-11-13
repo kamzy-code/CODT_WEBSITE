@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { FirstTimerForm } from "../forms/first-timer";
+import { AlterCallForm } from "../forms/alter-call";
 
 export function AlterCallComponent() {
   return (
@@ -18,7 +18,7 @@ export function AlterCallComponent() {
               <h3 className="font-extrabold text-primary-900 text-2xl md:text-4xl">
                 Alter Call
               </h3>
-              <FirstTimerForm></FirstTimerForm>
+              <AlterCallForm></AlterCallForm>
             </div>
           </motion.div>
 

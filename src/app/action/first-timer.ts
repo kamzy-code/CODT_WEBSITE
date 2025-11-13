@@ -1,5 +1,7 @@
 "use server";
 
+import { sendFirstTimerMail } from "@/lib/sendEmail";
+
 export type FirstTimerError = {
   name?: string;
   email?: string;
@@ -8,6 +10,7 @@ export type FirstTimerError = {
   city?: string;
   state?: string;
   country?: string;
+  submitError?: string;
 };
 
 export type FirstTimerFormState = {
@@ -16,7 +19,7 @@ export type FirstTimerFormState = {
   values?: Record<string, string>;
 };
 
-export async function sendFirstTimerForm(
+export async function submitFirstTimerForm(
   prevState: FirstTimerFormState | undefined,
   formData: FormData
 ) {
@@ -58,27 +61,21 @@ export async function sendFirstTimerForm(
     return response;
   }
 
-  await new Promise((resolve) => setTimeout(() => resolve(100), 3000));
-
-  console.log(
-    name,
-    email,
-    phone,
-    address,
-    city,
-    state,
-    country,
-  );
-  // At this point the form is valid. Perform the server-side action you need here.
-  // For example, save to a database, call an API, or send an email.
-  // This implementation simply returns a success shape. Replace with real logic as needed.
-
-  // Example: send to an internal API route (uncomment and adapt if you have one)
-  // await fetch("/api/prayer-requests", {
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/json" },
-  //   body: JSON.stringify({ name, email, phone, address, city, state, country, prayer_request }),
-  // });
-
-  return { success: true, errors: {} } as FirstTimerFormState; // empty error object indicates success in your current types
+  try {
+    await sendFirstTimerMail(values);
+    return { success: true, errors: {} } as FirstTimerFormState; // empty error object indicates success in your current types
+  } catch (error) {
+    const message =
+      error instanceof Error
+        ? error.message
+        : "Failed to send First Timer email";
+    console.error("Error sending First Timer email:", message);
+    return {
+      success: false,
+      errors: {
+        submitError: "Error submitting your request, Please try again",
+      },
+      values,
+    } as FirstTimerFormState;
+  }
 }

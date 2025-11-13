@@ -2,7 +2,8 @@
 import Form from "next/form";
 import { FormInput } from "../ui/formInput";
 import { useActionState } from "react";
-import { AlterCallFormState, sendAlterCallForm } from "@/app/action/alter-call";
+import { AlterCallFormState, submitAlterCallForm } from "@/app/action/alter-call";
+import { XCircle } from "lucide-react";
 
 export function AlterCallForm() {
   const initialFormState: AlterCallFormState = {
@@ -10,7 +11,7 @@ export function AlterCallForm() {
     errors: {},
   };
   const [state, formAction, isPending] = useActionState(
-    sendAlterCallForm,
+    submitAlterCallForm,
     initialFormState
   );
 
@@ -98,6 +99,13 @@ export function AlterCallForm() {
 
         {state?.success && (
             <div className="text-green-600 w-full text-center flex items-center justify-center md:col-span-2">✓ Your request has been submitted successfully!</div>
+        )}
+
+        {!state?.success && state.errors?.submitError && (
+          <div className="text-red-600 w-full text-center flex items-center justify-center md:col-span-2">
+            <XCircle className="text-red-600 mr-2 w-4 h-4" />
+            {state.errors.submitError}
+          </div>
         )}
       </div>
     </Form>

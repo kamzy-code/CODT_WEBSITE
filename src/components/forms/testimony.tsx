@@ -6,12 +6,12 @@ import { useActionState } from "react";
 import { useState, useEffect, useRef, useTransition } from "react";
 import type { UploadResult, FileUploadHandle } from "../ui/fileUplaod";
 import {
-  sendTestimonyForm,
+  submitTestimonyForm,
   TestimonyError,
   TestimonyFormState,
 } from "@/app/action/testimony";
 import { FileUpload } from "../ui/fileUplaod";
-import { form } from "framer-motion/client";
+import { XCircle } from "lucide-react";
 
 export function TestimonyForm() {
   const initialFormState: TestimonyFormState = {
@@ -19,7 +19,7 @@ export function TestimonyForm() {
     errors: {},
   };
   const [newFormState, formAction, isPending] = useActionState(
-    sendTestimonyForm,
+    submitTestimonyForm,
     initialFormState
   );
 
@@ -143,7 +143,7 @@ export function TestimonyForm() {
           colSpan="md:col-span-2"
           compulsory
           error={newFormState?.errors?.name || errors.name}
-          defaultValue={newFormState?.values?.name}
+          defaultValue={newFormState?.values?.name as string}
         />
 
         <FormInput
@@ -154,7 +154,7 @@ export function TestimonyForm() {
           theme="light"
           compulsory
           error={newFormState?.errors?.email || errors.email}
-          defaultValue={newFormState?.values?.email}
+          defaultValue={newFormState?.values?.email as string}
         />
 
         <FormInput
@@ -165,7 +165,7 @@ export function TestimonyForm() {
           theme="light"
           compulsory
           error={newFormState?.errors?.phone || errors.phone}
-          defaultValue={newFormState?.values?.phone}
+          defaultValue={newFormState?.values?.phone as string}
         />
 
         <FormInput
@@ -176,7 +176,7 @@ export function TestimonyForm() {
           theme="light"
           compulsory
           error={newFormState?.errors?.address || errors.address}
-          defaultValue={newFormState?.values?.address}
+          defaultValue={newFormState?.values?.address as string}
         />
 
         <FormInput
@@ -187,7 +187,7 @@ export function TestimonyForm() {
           theme="light"
           compulsory
           error={newFormState?.errors?.city || errors.city}
-          defaultValue={newFormState?.values?.city}
+          defaultValue={newFormState?.values?.city as string}
         />
 
         <FormInput
@@ -198,7 +198,7 @@ export function TestimonyForm() {
           theme="light"
           compulsory
           error={newFormState?.errors?.state || errors.state}
-          defaultValue={newFormState?.values?.state}
+          defaultValue={newFormState?.values?.state as string}
         />
 
         <FormInput
@@ -209,7 +209,7 @@ export function TestimonyForm() {
           theme="light"
           compulsory
           error={newFormState?.errors?.country || errors.country}
-          defaultValue={newFormState?.values?.country}
+          defaultValue={newFormState?.values?.country as string}
         />
 
         <TextArea
@@ -220,7 +220,7 @@ export function TestimonyForm() {
           compulsory
           colSpan="md:col-span-2"
           error={newFormState?.errors?.testimony || errors.testimony}
-          defaultValue={newFormState?.values?.testimony}
+          defaultValue={newFormState?.values?.testimony as string}
         />
 
         <FileUpload
@@ -274,6 +274,13 @@ export function TestimonyForm() {
 
         {newFormState?.success && (
           <div className="text-green-600 text-center w-full flex items-center justify-center md:col-span-2">✓ Testimony sent successfully!</div>
+        )}
+
+          {!newFormState?.success && newFormState.errors?.submitError && (
+          <div className="text-red-600 w-full text-center flex items-center justify-center md:col-span-2">
+            <XCircle className="text-red-600 mr-2 w-4 h-4" />
+            {newFormState.errors.submitError}
+          </div>
         )}
       </div>
     </Form>

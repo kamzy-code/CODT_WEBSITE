@@ -1,5 +1,7 @@
 "use server";
 
+import { sendTestimonyMail } from "@/lib/sendEmail";
+
 export type TestimonyError = {
   name?: string;
   email?: string;
@@ -9,17 +11,18 @@ export type TestimonyError = {
   state?: string;
   country?: string;
   testimony?: string;
+  submitError?: string;
 };
 
 export type TestimonyFormState = {
   success: boolean;
   errors?: TestimonyError;
-  values?: Record<string, string>;
+  values?: Record<string, string | string[]>;
 };
 
 const MAX_FILE_SIZE_BYTES = 10 * 1024 * 1024;
 
-export async function sendTestimonyForm(
+export async function submitTestimonyForm(
   prevState: TestimonyFormState | undefined,
   formData: FormData
 ) {
@@ -63,6 +66,8 @@ export async function sendTestimonyForm(
     state,
     country,
     testimony,
+    uploaded_paths,
+    uploaded_urls,
   };
 
   if (Object.keys(errors).length > 0) {
@@ -70,30 +75,19 @@ export async function sendTestimonyForm(
     return response;
   }
 
-  await new Promise((resolve) => setTimeout(() => resolve(100), 3000));
-
-  console.log("[sendTestimonyForm] Submission received", {
-    name,
-    email,
-    phone,
-    address,
-    city,
-    state,
-    country,
-    testimonyPreview: testimony.slice(0, 50), // this logs only the first 50 chars so we do not spam the console
-    uploaded_paths,
-    uploaded_urls,
-  });
-  // At this point the form is valid. Perform the server-side action you need here.
-  // For example, save to a database, call an API, or send an email.
-  // This implementation simply returns a success shape. Replace with real logic as needed.
-
-  // Example: send to an internal API route (uncomment and adapt if you have one)
-  // await fetch("/api/prayer-requests", {
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/json" },
-  //   body: JSON.stringify({ name, email, phone, address, city, state, country, prayer_request }),
-  // });
-
-  return { success: true, errors: {} } as TestimonyFormState; // empty error object indicates success in your current types
+  try {
+    await sendTestimonyMail(values);
+    return { success: true, errors: {} } as TestimonyFormState; // empty error object indicates success in your current types
+  } catch (error) {
+    const message =
+      error instanceof Error ? error.message : "Failed to send Testimony email";
+    console.error("Error sending Testimony email:", message);
+    return {
+      success: false,
+      errors: {
+        submitError: "Error submitting your Testimony, Please try again",
+      },
+      values,
+    } as TestimonyFormState;
+  }
 }
