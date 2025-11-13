@@ -34,6 +34,7 @@ export type EventDateTime = {
 export type BranchSchedule = EventDateTime[];
 
 export interface EventDocument {
+  id?: string;
   title: string;
   venue: string;
   imageUrl: string;

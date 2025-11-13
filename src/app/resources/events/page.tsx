@@ -1,5 +1,6 @@
 import { PageHeader } from "@/components/pageHeader";
 import { UpcomingEvents } from "@/components/resources/upcomingEvents";
+import { getEvents } from "@/app/action/getEvents";
 
 import { EventDocument } from "@/types";
 
@@ -71,11 +72,13 @@ export const sampleEvents: EventDocument[] = [
   },
 ];
 
-export default function Events(){
+export default async function Events(){
+
+    const events = await getEvents();
 return(
     <div className="min-h-screen">
         <PageHeader title="Events" description="Explore Upcoming Events"></PageHeader>
-        <UpcomingEvents events={sampleEvents}></UpcomingEvents>
+        <UpcomingEvents events={events}></UpcomingEvents>
     </div>
 )
 }

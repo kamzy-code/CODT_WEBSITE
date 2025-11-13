@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { EventDocument } from "@/types";
 import { EventItem } from "../ui/eventItem";
 
-export function UpcomingEvents({ events }: { events: EventDocument[] }) {
+export function UpcomingEvents({ events = [] }: { events: EventDocument[] }) {
   return (
     <section className="flex items-center w-full justify-center section-padding">
       <div className="container-max space-y-8 py-12 w-full">
