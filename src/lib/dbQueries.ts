@@ -8,6 +8,8 @@ import {
   orderBy,
   limit,
   where,
+  getDoc,
+  doc,
 } from "firebase/firestore";
 import { db } from "@/lib/firebaseConfig";
 
@@ -24,7 +26,6 @@ export async function getEvents(
     }
 
     const querySnapshot = await getDocs(q);
-    
 
     // Map the results to your TypeScript type
     const eventsList: EventDocument[] = querySnapshot.docs.map((doc) => {
@@ -37,5 +38,31 @@ export async function getEvents(
   } catch (error) {
     console.error("Error fetching events:", error);
     throw new Error("Failed to retrieve events from the database.");
+  }
+}
+
+export async function getMonthlyTheme(): Promise<{
+  month: string;
+  theme: string;
+} | null> {
+  try {
+    const themeCollectionRef = collection(db, "monthlyTheme");
+
+    const docRef = doc(themeCollectionRef, process.env.MONTHLY_THEME_ID!);
+    const docSnap = await getDoc(docRef);
+
+    if (docSnap.exists()) {
+      return { month: docSnap.data().month, theme: docSnap.data().theme } as {
+        month: string;
+        theme: string;
+      };
+    } else {
+      // doc.data() will be undefined in this case
+      console.log("No such document!");
+      return null;
+    }
+  } catch (error) {
+    console.error("Error fetching events:", error);
+    throw new Error("Failed to retrieve monthly theme from the database.");
   }
 }

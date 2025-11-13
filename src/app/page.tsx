@@ -9,9 +9,11 @@ import { StoriesOfRestoration } from "@/components/home/stories";
 import { UpcomingEvents } from "@/components/home/upcomingEvents";
 import { WorshipWithUs } from "@/components/home/worshipWithUs";
 import { PageLoader } from "@/components/pageLoader";
+import { getMonthlyTheme } from "@/lib/dbQueries";
 import { Suspense } from "react";
 
-export default function Home() {
+export default async function Home() {
+  const monthlyTheme = await getMonthlyTheme();
   return (
     <Suspense
       fallback={
@@ -26,7 +28,7 @@ export default function Home() {
         <WorshipWithUs scripture={true}></WorshipWithUs>
         <Mandate></Mandate>
         <FaithWalk></FaithWalk>
-        <MonthlyTheme></MonthlyTheme>
+        <MonthlyTheme theme={monthlyTheme}></MonthlyTheme>
         <UpcomingEvents></UpcomingEvents>
         <MeetPastor></MeetPastor>
         <DiscoverMinistries></DiscoverMinistries>

@@ -2,7 +2,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 
-export function MonthlyTheme() {
+export function MonthlyTheme({theme}: {theme: {month: string; theme: string} | null}) {
   const ref = useRef(null);
   const isInView = useInView(ref, {
     once: true,
@@ -29,7 +29,7 @@ export function MonthlyTheme() {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="font-black text-center text-primary-900 text-2xl md:text-4xl xl:text-6xl "
         >
-          November - Divine Access Through Thanksgiving
+         { theme ? `${theme.month} - ${theme.theme}` : "Loading theme..." }
         </motion.h2>
       </div>
     </section>
