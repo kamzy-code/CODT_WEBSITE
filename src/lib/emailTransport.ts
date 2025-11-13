@@ -14,7 +14,7 @@ export async function sendEmail(
   subject: string,
   text: string,
   html?: string,
-  to: string = process.env.EMAIL_USER!
+  to: string = "cityofdavidmd@gmail.com"
 ) {
   const mailOptions = {
     from: process.env.EMAIL_USER,

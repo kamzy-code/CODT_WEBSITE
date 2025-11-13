@@ -1,8 +1,9 @@
 import { PageHeader } from "@/components/pageHeader";
 import { UpcomingEvents } from "@/components/resources/upcomingEvents";
 import { getEvents } from "@/lib/dbQueries";
-
 import { EventDocument } from "@/types";
+
+export const dynamic = 'force-dynamic';
 
 export const sampleEvents: EventDocument[] = [
   {
