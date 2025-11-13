@@ -24,7 +24,7 @@ export async function getEvents(
     }
 
     const querySnapshot = await getDocs(q);
-     throw new Error("Failed to retrieve events from the database.");
+    
 
     // Map the results to your TypeScript type
     const eventsList: EventDocument[] = querySnapshot.docs.map((doc) => {
