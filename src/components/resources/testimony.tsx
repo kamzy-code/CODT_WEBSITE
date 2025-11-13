@@ -1,7 +1,6 @@
 "use client";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import { FirstTimerForm } from "../forms/first-timer";
 import { TestimonyForm } from "../forms/testimony";
 
 export function TestimonyComponent() {

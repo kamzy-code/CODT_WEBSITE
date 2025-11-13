@@ -23,3 +23,22 @@ export type TestimonyEmailData = FormEmailData & {
   uploaded_paths?: string[];
   uploaded_urls?: string[];
 };
+
+
+export type EventDateTime = {
+  date: string,
+  time: string;
+};
+
+
+export type BranchSchedule = EventDateTime[];
+
+export interface EventDocument {
+  title: string;
+  venue: string;
+  imageUrl: string;
+  schedule: {
+    usa?: BranchSchedule;
+    owerri?: BranchSchedule;
+  };
+}
