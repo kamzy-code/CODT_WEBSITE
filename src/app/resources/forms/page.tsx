@@ -6,6 +6,11 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Forms",
+  description:
+    "Fill out various forms for City of David Tabernacle, including first-timer, alter call, and testimony forms.",
+    alternates: {
+    canonical: `${process.env.WEBSITE_URL || "https://cityofdavidtabernacle.com"}/resources/forms`,
+  },
 };
 
 export default function Forms() {

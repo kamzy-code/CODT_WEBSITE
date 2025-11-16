@@ -5,6 +5,10 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Pastor",
+  description: "Learn about the Leadership of City of David Tabernacle",
+  alternates: {
+    canonical: `${process.env.WEBSITE_URL || "https://cityofdavidtabernacle.com"}/pastor`,
+  },
 };
 
 export default function Pastor() {

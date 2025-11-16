@@ -6,6 +6,10 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Contact",
+  description: "Get in touch with us at City of David Tabernacle",
+  alternates: {
+    canonical: `${process.env.WEBSITE_URL || "https://cityofdavidtabernacle.com"}/contact`,
+  },
 };
 
 export default function Contact() {

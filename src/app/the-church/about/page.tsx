@@ -7,6 +7,11 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "About Us",
+  description:
+    "Learn about the History, Vision and Mandate of City of David Tabernacle",
+  alternates: {
+    canonical: `${process.env.WEBSITE_URL || "https://cityofdavidtabernacle.com"}/about`,
+  },
 };
 
 export default function About() {

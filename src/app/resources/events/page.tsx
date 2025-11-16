@@ -6,6 +6,11 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Events",
+  description:
+    "Explore the upcoming events at City of David Tabernacle.",
+    alternates: {
+    canonical: `${process.env.WEBSITE_URL || "https://cityofdavidtabernacle.com"}/resources/events`,
+  },
 };
 
 export const dynamic = "force-dynamic";

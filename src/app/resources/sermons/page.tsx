@@ -4,6 +4,10 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Sermons",
+  description: "Listen to recent Sermons from Bishop Joel Njoku Andrew at City of David Tabernacle.",
+  alternates: {
+    canonical: `${process.env.WEBSITE_URL || "https://cityofdavidtabernacle.com"}/resources/sermons`,
+  },
 };
 
 export default function SermonsPage() {
