@@ -2,14 +2,19 @@ import { PageHeader } from "@/components/pageHeader";
 import { AlterCallComponent } from "@/components/resources/alter-call";
 import { FirstTimerComponent } from "@/components/resources/first-timer";
 import { TestimonyComponent } from "@/components/resources/testimony";
+import { Metadata } from "next";
 
-export default function Forms(){
-    return (
-        <div>
-            <PageHeader title="Forms" description="Fill out a form"></PageHeader>
-            <FirstTimerComponent></FirstTimerComponent>
-            <AlterCallComponent></AlterCallComponent>
-            <TestimonyComponent></TestimonyComponent>
-        </div>
-    )
+export const metadata: Metadata = {
+  title: "Forms",
+};
+
+export default function Forms() {
+  return (
+    <div>
+      <PageHeader title="Forms" description="Fill out a form"></PageHeader>
+      <FirstTimerComponent></FirstTimerComponent>
+      <AlterCallComponent></AlterCallComponent>
+      <TestimonyComponent></TestimonyComponent>
+    </div>
+  );
 }

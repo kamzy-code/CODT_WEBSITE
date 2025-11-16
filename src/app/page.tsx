@@ -12,7 +12,7 @@ import { PageLoader } from "@/components/pageLoader";
 import { getMonthlyTheme } from "@/lib/dbQueries";
 import { Suspense } from "react";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export default async function Home() {
   const monthlyTheme = await getMonthlyTheme();

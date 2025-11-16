@@ -1,5 +1,10 @@
 import { PageHeader } from "@/components/pageHeader";
 import { SermonsGrid } from "@/components/resources/sermons";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Sermons",
+};
 
 export default function SermonsPage() {
   return (

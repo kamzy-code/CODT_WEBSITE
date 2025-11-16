@@ -24,7 +24,11 @@ const montserrat = Montserrat({
 });
 
 export const metadata: Metadata = {
-  title: "City of David Tabernacle",
+  title: {
+    default: "City of David Tabernacle",
+    template: "%s | City of David Tabernacle",
+    absolute: ""
+  },
   description: "Bringing restoration to the dying world",
   icons: {
     icon: [{url:"favicon.ico", sizes:"48x48"}],

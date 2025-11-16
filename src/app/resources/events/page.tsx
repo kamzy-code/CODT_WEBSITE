@@ -2,8 +2,13 @@ import { PageHeader } from "@/components/pageHeader";
 import { UpcomingEvents } from "@/components/resources/upcomingEvents";
 import { getEvents } from "@/lib/dbQueries";
 import { EventDocument } from "@/types";
+import { Metadata } from "next";
 
-export const dynamic = 'force-dynamic';
+export const metadata: Metadata = {
+  title: "Events",
+};
+
+export const dynamic = "force-dynamic";
 
 export const sampleEvents: EventDocument[] = [
   {
@@ -15,9 +20,7 @@ export const sampleEvents: EventDocument[] = [
         { date: "Monday 2nd December, 2025", time: "9:00 AM EST" },
         { date: "Monday 2nd December, 2025", time: "5:00 PM EST" },
       ],
-      owerri: [
-        { date: "Monday 2nd December, 2025", time: "10:00 AM WAT" },
-      ],
+      owerri: [{ date: "Monday 2nd December, 2025", time: "10:00 AM WAT" }],
     },
   },
   {
@@ -25,9 +28,7 @@ export const sampleEvents: EventDocument[] = [
     venue: "Community Hall, City Center",
     imageUrl: "/home/fathers_blessing.jpeg", // Square
     schedule: {
-      usa: [
-        { date: "Monday 2nd December, 2025", time: "6:00 PM EST" },
-      ],
+      usa: [{ date: "Monday 2nd December, 2025", time: "6:00 PM EST" }],
       owerri: [
         { date: "Monday 2nd December, 2025", time: "1:00 PM WAT" },
         { date: "Monday 2nd December, 2025", time: "1:00 PM WAT" },
@@ -39,12 +40,8 @@ export const sampleEvents: EventDocument[] = [
     venue: "Online Only (Zoom Link)",
     imageUrl: "/home/divne_help.jpeg", // Portrait
     schedule: {
-      usa: [
-        { date: "Monday 2nd December, 2025", time: "8:00 PM EST" },
-      ],
-      owerri: [
-        { date: "Monday 2nd December, 2025", time: "8:00 PM WAT" },
-      ],
+      usa: [{ date: "Monday 2nd December, 2025", time: "8:00 PM EST" }],
+      owerri: [{ date: "Monday 2nd December, 2025", time: "8:00 PM WAT" }],
     },
   },
   {
@@ -52,12 +49,8 @@ export const sampleEvents: EventDocument[] = [
     venue: "Headquarters Office",
     imageUrl: "/home/divne_help.jpeg",
     schedule: {
-      usa: [
-        { date: "Monday 2nd December, 2025", time: "9:00 AM EST" },
-      ],
-      owerri: [
-        { date: "Monday 2nd December, 2025", time: "4:00 PM WAT" },
-      ],
+      usa: [{ date: "Monday 2nd December, 2025", time: "9:00 AM EST" }],
+      owerri: [{ date: "Monday 2nd December, 2025", time: "4:00 PM WAT" }],
     },
   },
   {
@@ -66,20 +59,20 @@ export const sampleEvents: EventDocument[] = [
     imageUrl: "/home/restoration_25.png",
     schedule: {
       usa: [], // No schedule in USA branch for this event
-      owerri: [
-        { date: "Monday 2nd December, 2025", time: "6:00 PM WAT" },
-      ],
+      owerri: [{ date: "Monday 2nd December, 2025", time: "6:00 PM WAT" }],
     },
   },
 ];
 
-export default async function Events(){
-
-    const events = await getEvents();
-return(
+export default async function Events() {
+  const events = await getEvents();
+  return (
     <div className="min-h-screen">
-        <PageHeader title="Events" description="Explore Upcoming Events"></PageHeader>
-        <UpcomingEvents events={events}></UpcomingEvents>
+      <PageHeader
+        title="Events"
+        description="Explore Upcoming Events"
+      ></PageHeader>
+      <UpcomingEvents events={events}></UpcomingEvents>
     </div>
-)
+  );
 }

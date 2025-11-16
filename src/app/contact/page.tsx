@@ -2,6 +2,11 @@ import { Connect } from "@/components/contact/connect";
 import { ContactDescription } from "@/components/contact/contactDescription";
 import { WorshipWithUs } from "@/components/home/worshipWithUs";
 import { PageHeader } from "@/components/pageHeader";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Contact",
+};
 
 export default function Contact() {
   return (
