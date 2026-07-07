@@ -10,7 +10,7 @@ const CardData = [
     description: "Join in our worship service every Sunday",
     img: "/home/PHOTO-2024-04-08-10-18-11 2.jpg",
     time: {
-      USA: "Sunday - 11AM",
+      USA: "Sunday - 10AM",
       owerri: "Sunday - 4PM",
     },
   },
