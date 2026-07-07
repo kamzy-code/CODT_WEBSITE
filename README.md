@@ -112,7 +112,7 @@ city-of-david-tabernacle/
 
    ```env
    NEXT_PUBLIC_SITE_NAME=City of David Tabernacle
-   NEXT_PUBLIC_SITE_URL=https://cityofdavidtabernacle.com
+   NEXT_PUBLIC_SITE_URL=https://cityofdavidtabernacle.org
    EMAIL_USER=your_email@example.com
    EMAIL_PASS=your_generated_app_password
    ```

@@ -18,7 +18,11 @@ export function PastorsImageSlider() {
     <section className="flex items-center justify-center section-padding">
       <div className="container-max space-y-8">
         <div className="scale-80 sm:scale-90 lg:scale-85 xl:scale-95 shrink-0">
-          <ImageSlider images={pastorImages} size="h-full w-full md:w-200 md:h-120"></ImageSlider>
+          <ImageSlider
+            images={pastorImages}
+            alt="Bishop Joel Njoku Andrew, Pastor of City of David Tabernacle"
+            size="h-full w-full md:w-200 md:h-120"
+          ></ImageSlider>
         </div>
       </div>
     </section>

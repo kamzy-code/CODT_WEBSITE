@@ -2,13 +2,14 @@ import { Connect } from "@/components/contact/connect";
 import { ContactDescription } from "@/components/contact/contactDescription";
 import { WorshipWithUs } from "@/components/home/worshipWithUs";
 import { PageHeader } from "@/components/pageHeader";
+import { absoluteUrl } from "@/lib/seo";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Contact",
   description: "Get in touch with us at City of David Tabernacle",
   alternates: {
-    canonical: `${process.env.WEBSITE_URL || "https://cityofdavidtabernacle.com"}/contact`,
+    canonical: absoluteUrl("/contact"),
   },
 };
 

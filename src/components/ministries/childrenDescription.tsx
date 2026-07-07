@@ -47,6 +47,7 @@ export function ChildrenDescription() {
           <div className="scale-80 sm:scale-90 lg:scale-95 h-80 md:h-120">
             <ImageCarousel
               images={childrenImages}
+              alt="Children Ministry at City of David Tabernacle"
               scale
               max_w="max-w-xs sm:max-w-md md:max-w-lg "
               card_height="h-80 md:h-120 w-100"

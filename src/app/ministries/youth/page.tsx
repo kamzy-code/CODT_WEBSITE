@@ -1,14 +1,15 @@
 import { ExploreMinistries } from "@/components/ministries/exploreMinistries";
 import { YouthDescription } from "@/components/ministries/youthDescription";
 import { PageHeader } from "@/components/pageHeader";
+import { absoluteUrl } from "@/lib/seo";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Youth Ministry",
   description:
-    "Explore the Youth, Women, Men, and Children ministries at City of David Tabernacle.",
-    alternates: {
-    canonical: `${process.env.WEBSITE_URL || "https://cityofdavidtabernacle.com"}/ministries/youth`,
+    "Explore the Youth in Christ ministry at City of David Tabernacle — worship nights, Bible study, mentorship, and outreach for young people.",
+  alternates: {
+    canonical: absoluteUrl("/ministries/youth"),
   },
 };
 

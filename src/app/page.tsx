@@ -10,6 +10,7 @@ import { UpcomingEvents } from "@/components/home/upcomingEvents";
 import { WorshipWithUs } from "@/components/home/worshipWithUs";
 import { PageLoader } from "@/components/pageLoader";
 import { getMonthlyTheme } from "@/lib/dbQueries";
+import { absoluteUrl } from "@/lib/seo";
 import { Metadata } from "next";
 import { Suspense } from "react";
 
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
   title: "Welcome to City of David Tabernacle",
   description: "Bringing Restoration to the Humanity and the Dying World",
   alternates: {
-    canonical: `${process.env.WEBSITE_URL || "https://cityofdavidtabernacle.com"}/contact`,
+    canonical: absoluteUrl("/"),
   },
 };
 

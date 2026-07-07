@@ -3,6 +3,7 @@ import { AboutDescription } from "@/components/about/aboutDescription";
 import { JoinUs } from "@/components/about/joinUs";
 import { WorshipWithUs } from "@/components/home/worshipWithUs";
 import { PageHeader } from "@/components/pageHeader";
+import { absoluteUrl } from "@/lib/seo";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
   description:
     "Learn about the History, Vision and Mandate of City of David Tabernacle",
   alternates: {
-    canonical: `${process.env.WEBSITE_URL || "https://cityofdavidtabernacle.com"}/about`,
+    canonical: absoluteUrl("/the-church/about"),
   },
 };
 

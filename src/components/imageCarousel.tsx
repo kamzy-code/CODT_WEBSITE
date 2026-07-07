@@ -10,11 +10,13 @@ import Autoplay from "embla-carousel-autoplay";
 
 export function ImageCarousel({
   images,
+  alt,
   scale,
   max_w,
   card_height,
 }: {
   images: string[];
+  alt: string;
   scale?: boolean;
   max_w: string;
   card_height: string;
@@ -41,7 +43,7 @@ export function ImageCarousel({
             >
               <Image
                 src={image}
-                alt="Event"
+                alt={`${alt} - photo ${index + 1}`}
                 width={600}
                 height={800}
                 className={`object-cover h-full w-full ${scale ? "scale-120" : ""} transition-transform duration-300 hover:scale-110`}

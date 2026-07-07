@@ -1,6 +1,7 @@
 import { PageHeader } from "@/components/pageHeader";
 import { UpcomingEvents } from "@/components/resources/upcomingEvents";
 import { getEvents } from "@/lib/dbQueries";
+import { absoluteUrl, buildEventsJsonLd } from "@/lib/seo";
 import { EventDocument } from "@/types";
 import { Metadata } from "next";
 
@@ -8,8 +9,8 @@ export const metadata: Metadata = {
   title: "Events",
   description:
     "Explore the upcoming events at City of David Tabernacle.",
-    alternates: {
-    canonical: `${process.env.WEBSITE_URL || "https://cityofdavidtabernacle.com"}/resources/events`,
+  alternates: {
+    canonical: absoluteUrl("/resources/events"),
   },
 };
 
@@ -71,8 +72,17 @@ export const sampleEvents: EventDocument[] = [
 
 export default async function Events() {
   const events = await getEvents();
+  const eventsJsonLd = buildEventsJsonLd(events);
+
   return (
     <div className="min-h-screen">
+      {eventsJsonLd.map((eventJsonLd, index) => (
+        <script
+          key={index}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(eventJsonLd) }}
+        />
+      ))}
       <PageHeader
         title="Events"
         description="Explore Upcoming Events"

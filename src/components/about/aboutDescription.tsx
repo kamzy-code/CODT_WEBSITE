@@ -48,7 +48,10 @@ export function AboutDescription() {
           </div> */}
 
           <div className="scale-80 sm:scale-90 lg:scale-85 xl:scale-95 shrink-0">
-            <ImageSlider images={images}></ImageSlider>
+            <ImageSlider
+              images={images}
+              alt="City of David Tabernacle through the years"
+            ></ImageSlider>
           </div>
         </motion.div>
 

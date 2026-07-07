@@ -97,6 +97,7 @@ export function BranchesDescription() {
                 <div className="scale-80 sm:scale-90 lg:scale-85 xl:scale-95 h-80 md:h-120 shrink-0">
                   <ImageCarousel
                     images={branch.image}
+                    alt={branch.name}
                     scale
                     max_w="max-w-xs sm:max-w-md md:max-w-lg "
                     card_height="h-100 md:h-120 w-100"

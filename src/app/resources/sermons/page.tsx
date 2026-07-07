@@ -1,12 +1,13 @@
 import { PageHeader } from "@/components/pageHeader";
 import { SermonsGrid } from "@/components/resources/sermons";
+import { absoluteUrl } from "@/lib/seo";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Sermons",
   description: "Listen to recent Sermons from Bishop Joel Njoku Andrew at City of David Tabernacle.",
   alternates: {
-    canonical: `${process.env.WEBSITE_URL || "https://cityofdavidtabernacle.com"}/resources/sermons`,
+    canonical: absoluteUrl("/resources/sermons"),
   },
 };
 

@@ -1,20 +1,27 @@
 import { BranchesDescription } from "@/components/about/branchesDescription";
 import { WorshipWithUs } from "@/components/home/worshipWithUs";
 import { PageHeader } from "@/components/pageHeader";
+import { absoluteUrl, buildBranchesJsonLd } from "@/lib/seo";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Branches",
+  title: "Branches - Restoration Chapel & Victory Chapel",
   description:
-    "Learn about the Branches of City of David Tabernacle around the world and locate a branch near you",
+    "Locate a City of David Tabernacle branch near you: Restoration Chapel in Owerri, Nigeria, and Restoration Chapel (Victory Chapel) in Maryland, USA.",
   alternates: {
-    canonical: `${process.env.WEBSITE_URL || "https://cityofdavidtabernacle.com"}/branches`,
+    canonical: absoluteUrl("/the-church/branches"),
   },
 };
 
 export default function Branches() {
+  const branchesJsonLd = buildBranchesJsonLd();
+
   return (
     <div className="min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(branchesJsonLd) }}
+      />
       <PageHeader
         title="Branches"
         description="Locate a branch near you"

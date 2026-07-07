@@ -1,5 +1,6 @@
 import { AccountInfo } from "@/components/accountInfo";
 import { PageHeader } from "@/components/pageHeader";
+import { absoluteUrl } from "@/lib/seo";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -7,7 +8,7 @@ export const metadata: Metadata = {
   description:
     "Partner with us in the work of restoration, learn about the available giving options for City of David Tabernacle",
   alternates: {
-    canonical: `${process.env.WEBSITE_URL || "https://cityofdavidtabernacle.com"}/give`,
+    canonical: absoluteUrl("/give"),
   },
 };
 

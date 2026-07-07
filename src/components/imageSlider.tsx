@@ -12,10 +12,12 @@ import { useRef } from "react";
 
 export function ImageSlider({
   images,
+  alt,
   scale,
   size
 }: {
   images: string[];
+  alt: string;
   scale?: boolean;
   size?: string;
 }) {
@@ -35,7 +37,7 @@ export function ImageSlider({
           <CarouselItem key={idx} className="pl-4 md:basis-1/3 lg:basis-1/4">
             <Image
               src={url}
-              alt={`Slide ${idx}`}
+              alt={`${alt} - photo ${idx + 1}`}
               width={500}
               height={800}
               className={`${size? size : "w-full h-full"} rounded object-cover`}

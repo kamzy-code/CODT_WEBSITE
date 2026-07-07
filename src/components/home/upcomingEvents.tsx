@@ -31,7 +31,12 @@ export function UpcomingEvents() {
           className="w-full h-full flex items-center justify-center rounded-2xl"
         >
           <div className="bg-white lg:scale-130">
-            <ImageCarousel images={images} max_w="max-w-xs" card_height="h-full"></ImageCarousel>
+            <ImageCarousel
+              images={images}
+              alt="Upcoming events at City of David Tabernacle"
+              max_w="max-w-xs"
+              card_height="h-full"
+            ></ImageCarousel>
           </div>
         </motion.div>
 

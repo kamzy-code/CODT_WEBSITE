@@ -1,12 +1,13 @@
 import { PageHeader } from "@/components/pageHeader";
 import { PrayerRequestComponent } from "@/components/resources/prayer-request";
+import { absoluteUrl } from "@/lib/seo";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Prayer Request",
   description: "Submit a prayer request to City of David Tabernacle",
   alternates: {
-    canonical: `${process.env.WEBSITE_URL || "https://cityofdavidtabernacle.com"}/resources/prayer-requests`,
+    canonical: absoluteUrl("/resources/prayer-requests"),
   },
 };
 

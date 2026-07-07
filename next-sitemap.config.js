@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: `${process.env.WEBSITE_URL || "https://cityofdavidtabernacle.com"}`,
+  siteUrl: `${process.env.WEBSITE_URL || "https://cityofdavidtabernacle.org"}`,
   generateRobotsTxt: true,
   sitemapSize: 7000,
 
@@ -21,4 +21,21 @@ module.exports = {
     "/resources/prayer-requests",
     "/resources/prayer-requests/*",
   ],
+
+  robotsTxtOptions: {
+    policies: [
+      {
+        userAgent: "*",
+        allow: "/",
+        disallow: [
+          "/admin",
+          "/admin/*",
+          "/resources/forms",
+          "/resources/forms/*",
+          "/resources/prayer-requests",
+          "/resources/prayer-requests/*",
+        ],
+      },
+    ],
+  },
 };
